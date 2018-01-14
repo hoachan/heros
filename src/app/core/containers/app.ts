@@ -1,11 +1,11 @@
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-// import { Store, select } from '@ngrx/store';
+import { Store} from '@ngrx/store';
 
-// import * as fromRoot from '../../reducers';
+import * as fromRoot from '../../reducers';
 // import * as fromAuth from '../../auth/reducers';
-// import * as layout from '../actions/layout';
+import * as layout from '../actions/layout';
 // import * as Auth from '../../auth/actions/auth';
 
 @Component({
@@ -37,20 +37,20 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 })
 export class AppComponent {
   public showSidenav$: Observable<boolean>;
-  public loggedIn$: Observable<boolean>;
+  // public loggedIn$: Observable<boolean>;
 
   constructor(
-    //   private store: Store<fromRoot.State>
+      private store: Store<fromRoot.State>
     ) {
     /**
      * Selectors can be applied with the `select` operator which passes the state
      * tree to the provided selector
      */
-    // this.showSidenav$ = this.store.pipe(select(fromRoot.getShowSidenav));
-    // this.loggedIn$ = this.store.pipe(select(fromAuth.getLoggedIn));
+    this.showSidenav$ = this.store.select(fromRoot.getShowSidenav);
+    // this.loggedIn$ = this.store.select(fromAuth.getLoggedIn);
 
-    this.showSidenav$ = of(true);
-    this.loggedIn$  = of(true);
+    // this.showSidenav$ = of(true);
+    // this.loggedIn$  = of(true);
 
   }
 
@@ -61,15 +61,15 @@ export class AppComponent {
      * updates and user interaction through the life of our
      * application.
      */
-    // this.store.dispatch(new layout.CloseSidenav());
+    this.store.dispatch(new layout.CloseSidenav());
   }
 
   openSidenav() {
-    // this.store.dispatch(new layout.OpenSidenav());
+    this.store.dispatch(new layout.OpenSidenav());
   }
 
   logout() {
-    // this.closeSidenav();
+    this.closeSidenav();
 
     // this.store.dispatch(new Auth.Logout());
   }
