@@ -37,7 +37,7 @@ import * as layout from '../actions/layout';
 })
 export class AppComponent {
   public showSidenav$: Observable<boolean>;
-  // public loggedIn$: Observable<boolean>;
+  public loggedIn$: Observable<boolean>;
 
   constructor(
       private store: Store<fromRoot.State>
@@ -50,7 +50,7 @@ export class AppComponent {
     // this.loggedIn$ = this.store.select(fromAuth.getLoggedIn);
 
     // this.showSidenav$ = of(true);
-    // this.loggedIn$  = of(true);
+    this.loggedIn$  = of(true);
 
   }
 
