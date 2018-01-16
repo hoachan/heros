@@ -8,6 +8,7 @@ import { AppComponent } from './core/containers/app';
 import { AppRoutingModule } from './app-routing.module';
 
 import { CoreModule } from './core/core.module';
+import { AuthModule } from './auth/auth.module';
 
 /**
  * ngrx setting
@@ -26,6 +27,7 @@ import { schema } from './db';
     BrowserAnimationsModule,
     AppRoutingModule,
     CoreModule,
+    AuthModule,
 
     /**
      * StoreModule.forRoot is imported once in the root module, accepting a reducer

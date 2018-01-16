@@ -12,6 +12,10 @@ const routes: Routes = [
     path : 'core',
     loadChildren : './core/core.module#CoreModule'
   },
+  {
+    path : 'login',
+    loadChildren : '/auth/auth.module#AuthModule',
+  },
   { path: '**', component: NotFoundPageComponent },
 ];
 
