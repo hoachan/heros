@@ -14,6 +14,9 @@ import { AuthGuard } from './services/auth-guard.service';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
+import { AuthEffects } from './effects/auth.effects';
+import { reducers } from './reducers';
+
 export const COMPONENTS = [LoginPageComponent, LoginFormComponent];
 
 @NgModule({
@@ -22,6 +25,12 @@ export const COMPONENTS = [LoginPageComponent, LoginFormComponent];
     AuthRoutingModule,
     ReactiveFormsModule,
     MaterialModule,
+
+    /**
+     * ngrx saving store
+     */
+    StoreModule.forFeature('auth', reducers),
+    EffectsModule.forFeature([AuthEffects]),
   ],
   declarations: COMPONENTS,
   exports : COMPONENTS,

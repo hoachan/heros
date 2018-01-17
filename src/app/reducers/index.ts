@@ -30,7 +30,6 @@ import {
    */
   export interface State {
     layout: fromLayout.State;
-    auth : fromAuth.State;
   }
   
   /**
@@ -40,7 +39,6 @@ import {
    */
   export const reducers: ActionReducerMap<State> = {
     layout: fromLayout.reducer,
-    auth : fromAuth.reducers,
   };
   
   // console.log all actions
