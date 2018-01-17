@@ -23,12 +23,14 @@ import {
   
   import * as fromLayout from '../core/reducers/layout';
   
+  import * as fromAuth from '../auth/reducers';
   /**
    * As mentioned, we treat each reducer like a table in a database. This means
    * our top level state interface is just a map of keys to inner state types.
    */
   export interface State {
     layout: fromLayout.State;
+    auth : fromAuth.State;
   }
   
   /**
@@ -38,6 +40,7 @@ import {
    */
   export const reducers: ActionReducerMap<State> = {
     layout: fromLayout.reducer,
+    auth : fromAuth.reducers,
   };
   
   // console.log all actions

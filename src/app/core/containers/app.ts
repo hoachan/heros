@@ -4,9 +4,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Store} from '@ngrx/store';
 
 import * as fromRoot from '../../reducers';
-// import * as fromAuth from '../../auth/reducers';
+import * as fromAuth from '../../auth/reducers';
 import * as layout from '../actions/layout';
-// import * as Auth from '../../auth/actions/auth';
+import * as Auth from '../../auth/actions/auth';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +20,7 @@ import * as layout from '../actions/layout';
         <bc-nav-item (navigate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/core" icon="search" hint="Find your next book!">
           Browse Books
         </bc-nav-item>
-        <bc-nav-item (navigate)="closeSidenav()" *ngIf="!(loggedIn$ | async)">
+        <bc-nav-item (navigate)="closeSidenav()" *ngIf="!(loggedIn$ | async)" routerLink="/login">
           Sign In
         </bc-nav-item>
         <bc-nav-item (navigate)="logout()" *ngIf="loggedIn$ | async">
@@ -50,7 +50,7 @@ export class AppComponent {
     // this.loggedIn$ = this.store.select(fromAuth.getLoggedIn);
 
     // this.showSidenav$ = of(true);
-    this.loggedIn$  = of(true);
+    this.loggedIn$  = of(false);
 
   }
 

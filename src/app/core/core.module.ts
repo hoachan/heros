@@ -1,4 +1,4 @@
-import { MaterialModule } from './../material/material.module';
+import { MaterialModule } from '../material';
 import { NotFoundPageComponent } from './containers/not-found-page';
 import { AppComponent } from './containers/app';
 

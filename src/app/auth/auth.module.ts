@@ -27,4 +27,6 @@ export const COMPONENTS = [LoginPageComponent, LoginFormComponent];
   exports : COMPONENTS,
   providers: [AuthService, AuthGuard],
 })
-export class AuthModule { }
+export class AuthModule { 
+
+}
