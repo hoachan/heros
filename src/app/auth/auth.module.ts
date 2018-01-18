@@ -30,7 +30,7 @@ export const COMPONENTS = [LoginPageComponent, LoginFormComponent];
      * ngrx saving store
      */
     StoreModule.forFeature('auth', reducers),
-    EffectsModule.forFeature([AuthEffects]),
+    EffectsModule.forFeature([]),
   ],
   declarations: COMPONENTS,
   exports : COMPONENTS,

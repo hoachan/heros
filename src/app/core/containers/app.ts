@@ -47,10 +47,10 @@ export class AppComponent {
      * tree to the provided selector
      */
     this.showSidenav$ = this.store.select(fromRoot.getShowSidenav);
-    // this.loggedIn$ = this.store.select(fromAuth.getLoggedIn);
+    this.loggedIn$ = this.store.select(fromAuth.getLoggedIn);
 
     // this.showSidenav$ = of(true);
-    this.loggedIn$  = of(false);
+    // this.loggedIn$  = of(false);
 
   }
 
@@ -71,6 +71,6 @@ export class AppComponent {
   logout() {
     this.closeSidenav();
 
-    // this.store.dispatch(new Auth.Logout());
+    this.store.dispatch(new Auth.Logout());
   }
 }
