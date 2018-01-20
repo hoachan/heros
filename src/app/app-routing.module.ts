@@ -12,12 +12,12 @@ const routes: Routes = [
   },
   {
     path : 'core',
-    loadChildren : './core/core.module#CoreModule'
+    loadChildren : './core/core.module#CoreModule',
+    canActivate: [AuthGuard],
   },
   {
     path : 'login',
     loadChildren : './auth/auth.module#AuthModule',
-    // canActivate: [AuthGuard],
   },
   { path: '**', component: NotFoundPageComponent },
 ];
