@@ -16,10 +16,11 @@ import * as Auth from '../actions/auth';
   styles: [],
 })
 export class LoginPageComponent implements OnInit {
-  pending$ = this.store.select(fromAuth.getLoginPagePending);
-  error$ = this.store.select(fromAuth.getLoginPageError);
 
   constructor(private store: Store<fromAuth.State>) {}
+  
+  pending$ = this.store.select(fromAuth.getLoginPagePending);
+  error$ = this.store.select(fromAuth.getLoginPageError);
 
   ngOnInit() {}
 
