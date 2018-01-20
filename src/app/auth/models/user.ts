@@ -6,3 +6,7 @@ export interface Authenticate {
 export interface User {
     name : string;
 }
+
+export interface UserInfor {
+    title : string;
+}
