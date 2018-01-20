@@ -8,5 +8,6 @@ export interface User {
 }
 
 export interface UserInfor {
-    title : string;
+    title   : string;
+    age     : number;
 }
