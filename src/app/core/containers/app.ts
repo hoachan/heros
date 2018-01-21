@@ -29,11 +29,20 @@ import * as Auth from '../../auth/actions/auth';
       </bc-sidenav>
       <bc-toolbar (openMenu)="openSidenav()">
         Hoa Chan
+        <!-- This fills the remaining space of the current row -->
+        <span class="example-fill-remaining-space"></span>
+        <bc-toolbar-menu></bc-toolbar-menu>
       </bc-toolbar>
-
       <router-outlet></router-outlet>
     </bc-layout>
   `,
+  styles : [
+    `  .example-fill-remaining-space {
+      /* This fills the remaining space, by using flexbox. 
+         Every toolbar row uses a flexbox row layout. */
+      flex: 1 1 auto;
+    }`
+  ] 
 })
 export class AppComponent {
   public showSidenav$: Observable<boolean>;

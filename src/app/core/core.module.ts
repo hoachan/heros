@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 
 import { CoreRoutingModule } from './core-routing.module';
 import { NavItemComponent } from './components/nav-item';
-
+import { ToolbarMenuComponent } from './components/toolbar-menu';
 
 export const COMPONENTS = [
   AppComponent,
@@ -20,6 +20,7 @@ export const COMPONENTS = [
   NavItemComponent,
   SidenavComponent,
   ToolbarComponent,
+  ToolbarMenuComponent,
 ];
 
 @NgModule({
