@@ -11,7 +11,8 @@ import { CommonModule } from '@angular/common';
 
 import { CoreRoutingModule } from './core-routing.module';
 import { NavItemComponent } from './components/nav-item';
-import { ToolbarMenuComponent } from './components/toolbar-menu';
+import { LeftToolbarComponent } from './components/left-toolbar';
+import { HeaderComponent } from './components/header';
 
 export const COMPONENTS = [
   AppComponent,
@@ -20,7 +21,8 @@ export const COMPONENTS = [
   NavItemComponent,
   SidenavComponent,
   ToolbarComponent,
-  ToolbarMenuComponent,
+  LeftToolbarComponent,
+  HeaderComponent,
 ];
 
 @NgModule({

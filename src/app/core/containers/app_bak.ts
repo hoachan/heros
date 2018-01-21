@@ -13,7 +13,7 @@ import * as Auth from '../../auth/actions/auth';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <bc-header
-      (openMenu1)="openSideNav()"
+      (openMenu)="openSideNav()"
     ></bc-header> 
     <bc-layout>
       <bc-sidenav [open]="showSidenav$ | async">
@@ -30,10 +30,16 @@ import * as Auth from '../../auth/actions/auth';
           Sign Out
         </bc-nav-item>
       </bc-sidenav>
-      <router-outlet></router-outlet>
     </bc-layout>
+    <router-outlet></router-outlet>
   `,
-  styles : [] 
+  styles : [
+    `
+    .search-widh-bar {
+      width : 45%;
+    }
+    `
+  ] 
 })
 export class AppComponent {
   public showSidenav$: Observable<boolean>;

@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, ViewChild, Input } from '@angular/core';
 
 @Component({
-  selector: 'bc-toolbar-menu',
+  selector: 'bc-left-toolbar',
   template: `
   <!-- Notification toggle button -->
     <button 
@@ -36,7 +36,7 @@ import { Component, Output, EventEmitter, ViewChild, Input } from '@angular/core
     </mat-menu>
   `,
 })
-export class ToolbarMenuComponent {
+export class LeftToolbarComponent {
     @ViewChild('MatMenuTrigger') trigger;
 
     @Output() openSubMenu = new EventEmitter();
