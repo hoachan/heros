@@ -1,8 +1,18 @@
-import { Component, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, Output, EventEmitter, ViewChild, Input } from '@angular/core';
 
 @Component({
   selector: 'bc-toolbar-menu',
   template: `
+  <!-- Notification toggle button -->
+    <button 
+        mat-icon-button
+        matTooltip="Notifications" 
+        [style.overflow]="'visible'" 
+        class="topbar-button-right">
+        <mat-icon>notifications</mat-icon>
+        <span class="mat-bg-warn notification-number">3</span>
+    </button>
+
     <button mat-icon-button [matMenuTriggerFor]="menu" class="topbar-button-right img-button">
         <img src="assets/images/face-7.jpg" alt="images has not">
     </button>
