@@ -3,9 +3,8 @@ import { Component, Output, EventEmitter, ViewChild } from '@angular/core';
 @Component({
   selector: 'bc-toolbar-menu',
   template: `
-    <button mat-button [matMenuTriggerFor]="menu">
-      <mat-icon>settings</mat-icon>
-      Setting
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="topbar-button-right img-button">
+        <img src="assets/images/face-7.jpg" alt="images has not">
     </button>
     <mat-menu #menu="matMenu">
         <button mat-menu-item routerLink="/profile/overview">
