@@ -5,6 +5,7 @@ import { Component, Output, EventEmitter, ViewChild } from '@angular/core';
   template: `
     <button mat-button [matMenuTriggerFor]="menu">
       <mat-icon>settings</mat-icon>
+      Setting
     </button>
     <mat-menu #menu="matMenu">
         <button mat-menu-item routerLink="/profile/overview">
