@@ -29,6 +29,18 @@ import * as Auth from '../../auth/actions/auth';
       </bc-sidenav>
       <bc-toolbar (openMenu)="openSidenav()">
         Hoa Chan
+        <!-- Search form -->
+        <div 
+        fxFlex
+        fxHide.lt-sm="true" 
+        class="search-bar search-widh-bar"
+        >
+          <form class="top-search-form">
+            <mat-icon role="img">search</mat-icon>
+            <input autofocus="true" placeholder="Search" type="text">
+          </form>
+        </div>
+        <span fxFlex></span>
         <!-- This fills the remaining space of the current row -->
         <span class="example-fill-remaining-space"></span>
         <bc-toolbar-menu></bc-toolbar-menu>
@@ -37,11 +49,16 @@ import * as Auth from '../../auth/actions/auth';
     </bc-layout>
   `,
   styles : [
-    `  .example-fill-remaining-space {
+    `
+    .example-fill-remaining-space {
       /* This fills the remaining space, by using flexbox. 
          Every toolbar row uses a flexbox row layout. */
       flex: 1 1 auto;
-    }`
+    }
+    .search-widh-bar {
+      width : 45%;
+    }
+    `
   ] 
 })
 export class AppComponent {
