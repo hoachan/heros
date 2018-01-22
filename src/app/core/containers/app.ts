@@ -13,17 +13,17 @@ import * as Auth from '../../auth/actions/auth';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <bc-header
-      (openMenu)="openSidenav()"
+      (openMenu)="clickMenu()"
     ></bc-header> 
     <bc-layout>
       <bc-sidenav [open]="showSidenav$ | async">
-        <bc-nav-item (navigate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/" icon="book" hint="View your book collection">
+        <bc-nav-item *ngIf="loggedIn$ | async" routerLink="/" icon="book" hint="View your book collection">
           My Collection
         </bc-nav-item>
-        <bc-nav-item (navigate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/core" icon="search" hint="Find your next book!">
+        <bc-nav-item *ngIf="loggedIn$ | async" routerLink="/core" icon="search" hint="Find your next book!">
           Browse Books
         </bc-nav-item>
-        <bc-nav-item (navigate)="closeSidenav()" *ngIf="!(loggedIn$ | async)" routerLink="/login">
+        <bc-nav-item *ngIf="!(loggedIn$ | async)" routerLink="/login">
           Sign In
         </bc-nav-item>
         <bc-nav-item (navigate)="logout()" *ngIf="loggedIn$ | async">
@@ -39,6 +39,7 @@ export class AppComponent {
   public showSidenav$: Observable<boolean>;
   public loggedIn$: Observable<boolean>;
 
+  public sidenavAble : boolean = false;
   constructor(
       private store: Store<fromRoot.State>
     ) {
@@ -48,10 +49,6 @@ export class AppComponent {
      */
     this.showSidenav$ = this.store.select(fromRoot.getShowSidenav);
     this.loggedIn$ = this.store.select(fromAuth.getLoggedIn);
-
-    // this.showSidenav$ = of(true);
-    // this.loggedIn$  = of(false);
-
   }
 
   closeSidenav() {
@@ -69,8 +66,16 @@ export class AppComponent {
   }
 
   logout() {
-    this.closeSidenav();
-
     this.store.dispatch(new Auth.Logout());
+  }
+
+  clickMenu(){
+    this.sidenavAble = !this.sidenavAble;
+
+    if (!this.sidenavAble) {
+      return this.closeSidenav();
+    }
+
+    return this.openSidenav();
   }
 }

@@ -37,7 +37,5 @@ import { Component, Output, EventEmitter, ViewChild, Input } from '@angular/core
   `,
 })
 export class LeftToolbarComponent {
-    @ViewChild('MatMenuTrigger') trigger;
-
     @Output() openSubMenu = new EventEmitter();
 }
