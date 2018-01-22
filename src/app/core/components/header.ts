@@ -3,7 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'bc-header',
   template: `
-            <bc-toolbar (openMenu)="openSidenav()">
+            <bc-toolbar (openMenu)="openMenu.emit()">
                 Hoa Chan
                 <!-- Search form -->
                 <div 
@@ -27,10 +27,5 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class HeaderComponent {
 
-    @Output() openMenu1 = new EventEmitter();
-
-    openSidenav($event){
-        this.openMenu1.emit($event);
-        console.log("here is test");
-    }
+    @Output() openMenu = new EventEmitter();
 }

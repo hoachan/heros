@@ -13,7 +13,7 @@ import * as Auth from '../../auth/actions/auth';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <bc-header
-      (openMenu1)="openSideNav()"
+      (openMenu)="openSidenav()"
     ></bc-header> 
     <bc-layout>
       <bc-sidenav [open]="showSidenav$ | async">
