@@ -31,18 +31,18 @@ import * as Auth from '../../auth/actions/auth';
         </bc-nav-item>
       </bc-sidenav>
       <router-outlet></router-outlet>
-      <bc-header
-       (openMenu)="clickMenu()"
-      ></bc-header>
     </bc-layout>
   `,
-  styles : [] 
+  styles : [
+    `
+    `
+  ] 
 })
 export class AppComponent {
   public showSidenav$: Observable<boolean>;
   public loggedIn$: Observable<boolean>;
 
-  public sidenavAble : boolean = false;
+  public sidenavAble : boolean;
   constructor(
       private store: Store<fromRoot.State>
     ) {
@@ -52,6 +52,8 @@ export class AppComponent {
      */
     this.showSidenav$ = this.store.select(fromRoot.getShowSidenav);
     this.loggedIn$ = this.store.select(fromAuth.getLoggedIn);
+
+    this.showSidenav$.subscribe(showSidenave => this.sidenavAble = showSidenave);
   }
 
   closeSidenav() {
