@@ -13,7 +13,7 @@ import { Component, Input } from '@angular/core';
     `
     mat-sidenav {
       width: 300px;
-      min-height : 500px;
+      margin-top : 64px;
     }
   `,
   ],

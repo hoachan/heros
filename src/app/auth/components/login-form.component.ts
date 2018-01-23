@@ -64,6 +64,10 @@ import { Authenticate } from '../models/user';
       flex-direction: row;
       justify-content: flex-end;
     }
+
+    .loginButtons button {
+      background : #3f51b5;
+    }
   `,
   ],
 })

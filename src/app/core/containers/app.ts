@@ -12,10 +12,10 @@ import * as Auth from '../../auth/actions/auth';
   selector: 'app-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <bc-header
-      (openMenu)="clickMenu()"
-    ></bc-header> 
     <bc-layout>
+      <bc-header
+       (openMenu)="clickMenu()"
+      ></bc-header> 
       <bc-sidenav [open]="showSidenav$ | async">
         <bc-nav-item *ngIf="loggedIn$ | async" routerLink="/" icon="book" hint="View your book collection">
           My Collection
@@ -31,6 +31,9 @@ import * as Auth from '../../auth/actions/auth';
         </bc-nav-item>
       </bc-sidenav>
       <router-outlet></router-outlet>
+      <bc-header
+       (openMenu)="clickMenu()"
+      ></bc-header>
     </bc-layout>
   `,
   styles : [] 

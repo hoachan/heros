@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'bc-layout',
   template: `
-    <mat-sidenav-container>
+    <mat-sidenav-container  fullscreen>
 
       <ng-content></ng-content>
 
