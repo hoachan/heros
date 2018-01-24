@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { BookRoutingModule } from './book-routing.module';
+import { BooksRoutingModule } from './books-routing.module';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -9,7 +9,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { ComponentsModule } from './components';
 import { BookEffects } from './effects/book';
 import { CollectionEffects } from './effects/collection';
+
 import { BookExistsGuard } from './guards/book-exists';
+import { GoogleBooksService } from './services/google-books';
 
 import { FindBookPageComponent } from './containers/find-book-page';
 import { ViewBookPageComponent } from './containers/view-book-page';
@@ -23,7 +25,7 @@ import { reducers } from './reducers';
 @NgModule({
   imports: [
     CommonModule,
-    BookRoutingModule,
+    BooksRoutingModule,
     MaterialModule,
     ComponentsModule,
     /**
@@ -44,6 +46,12 @@ import { reducers } from './reducers';
      */
     EffectsModule.forFeature([BookEffects, CollectionEffects]),
   ],
-  declarations: []
+  declarations: [
+    FindBookPageComponent,
+    ViewBookPageComponent,
+    SelectedBookPageComponent,
+    CollectionPageComponent,
+  ],
+  providers: [GoogleBooksService, BookExistsGuard],
 })
-export class BookModule { }
+export class BooksModule { }

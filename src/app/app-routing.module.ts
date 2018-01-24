@@ -13,11 +13,16 @@ const routes: Routes = [
   {
     path : 'core',
     loadChildren : './core/core.module#CoreModule',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path : 'login',
     loadChildren : './auth/auth.module#AuthModule',
+  },
+  {
+    path : 'books',
+    loadChildren: './books/books.module#BooksModule',
+    canActivate: [AuthGuard],
   },
   { path: '**', component: NotFoundPageComponent },
 ];

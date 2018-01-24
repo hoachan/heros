@@ -17,10 +17,10 @@ import * as Auth from '../../auth/actions/auth';
        (openMenu)="clickMenu()"
       ></bc-header> 
       <bc-sidenav [open]="showSidenav$ | async">
-        <bc-nav-item *ngIf="loggedIn$ | async" routerLink="/" icon="book" hint="View your book collection">
+        <bc-nav-item *ngIf="loggedIn$ | async" routerLink="/books" icon="book" hint="View your book collection">
           My Collection
         </bc-nav-item>
-        <bc-nav-item *ngIf="loggedIn$ | async" routerLink="/core" icon="search" hint="Find your next book!">
+        <bc-nav-item *ngIf="loggedIn$ | async" routerLink="/books/find" icon="search" hint="Find your next book!">
           Browse Books
         </bc-nav-item>
         <bc-nav-item *ngIf="!(loggedIn$ | async)" routerLink="/login">

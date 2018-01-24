@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { Store} from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 import * as fromBooks from '../reducers';
@@ -35,7 +35,7 @@ export class CollectionPageComponent implements OnInit {
   books$: Observable<Book[]>;
 
   constructor(private store: Store<fromBooks.State>) {
-    this.books$ = store.pipe(select(fromBooks.getBookCollection));
+    this.books$ = store.select(fromBooks.getBookCollection);
   }
 
   ngOnInit() {
