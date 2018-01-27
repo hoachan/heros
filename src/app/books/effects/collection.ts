@@ -21,6 +21,7 @@ import {
 } from './../actions/collection';
 import { Book } from '../models/book';
 import { switchMap, toArray, map, catchError, mergeMap } from 'rxjs/operators';
+import { IndexDbRepositoryService } from '../../core/services/indexDbRepository';
 
 @Injectable()
 export class CollectionEffects {
@@ -36,15 +37,14 @@ export class CollectionEffects {
    */
   @Effect({ dispatch: false })
   openDB$: Observable<any> = defer(() => {
-    return this.db.open('books_app');
+    return this.repository.openDatabase('books_app');
   });
 
   @Effect()
   loadCollection$: Observable<Action> = this.actions$.ofType(CollectionActionTypes.Load)
   .pipe(
     switchMap(() =>
-      this.db
-        .query('books')
+      this.repository.query('books')
         .pipe(
           toArray(),
           map((books: Book[]) => new LoadSuccess(books)),
@@ -58,7 +58,7 @@ export class CollectionEffects {
   .pipe(
     map((action: AddBook) => action.payload),
     mergeMap(book =>
-      this.db
+      this.repository
         .insert('books', [book])
         .pipe(
           map(() => new AddBookSuccess(book)),
@@ -72,8 +72,8 @@ export class CollectionEffects {
   .pipe(
     map((action: RemoveBook) => action.payload),
     mergeMap(book =>
-      this.db
-        .executeWrite('books', 'delete', [book.id])
+      this.repository
+        .delete('books',[book.id])
         .pipe(
           map(() => new RemoveBookSuccess(book)),
           catchError(() => of(new RemoveBookFail(book)))
@@ -81,5 +81,9 @@ export class CollectionEffects {
     )
   );
 
-  constructor(private actions$: Actions, private db: Database) {}
+  constructor(
+      private actions$: Actions, 
+      private db: Database,
+      private repository : IndexDbRepositoryService
+    ) {}
 }

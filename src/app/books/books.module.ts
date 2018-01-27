@@ -12,6 +12,7 @@ import { CollectionEffects } from './effects/collection';
 
 import { BookExistsGuard } from './guards/book-exists';
 import { GoogleBooksService } from './services/google-books';
+import { IndexDbRepositoryService } from './../core/services/indexDbRepository';
 
 import { FindBookPageComponent } from './containers/find-book-page';
 import { ViewBookPageComponent } from './containers/view-book-page';
@@ -52,6 +53,6 @@ import { reducers } from './reducers';
     SelectedBookPageComponent,
     CollectionPageComponent,
   ],
-  providers: [GoogleBooksService, BookExistsGuard],
+  providers: [IndexDbRepositoryService, GoogleBooksService, BookExistsGuard],
 })
 export class BooksModule { }
