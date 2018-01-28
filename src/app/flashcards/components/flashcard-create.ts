@@ -4,20 +4,23 @@ import { Flashcard } from './../models/flashcard';
 
 
 @Component({
-  selector: 'bc-book-detail',
+  selector: 'fc-create-card',
   template: `
     <div class="flashcard-create-container">
       <mat-card>
-        <mat-card-title>
-          <h1>1</h1>
-        </mat-card-title>
         <mat-card-content>
             <mat-form-field>
-              <textarea matInput placeholder="Textarea"></textarea>
+              <textarea matInput placeholder="入力"
+              matTextareaAutosize matAutosizeMinRows="2"
+              matAutosizeMaxRows="10"
+              ></textarea>
             </mat-form-field>
 
             <mat-form-field>
-              <textarea matInput placeholder="Textarea"></textarea>
+              <textarea matInput placeholder="入力"
+              matTextareaAutosize matAutosizeMinRows="2"
+              matAutosizeMaxRows="10"
+              ></textarea>
             </mat-form-field>
         </mat-card-content>
         <mat-card-actions>
