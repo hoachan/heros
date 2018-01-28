@@ -24,6 +24,10 @@ const routes: Routes = [
     loadChildren: './books/books.module#BooksModule',
     canActivate: [AuthGuard],
   },
+  {
+    path : 'flashcards',
+    loadChildren : './flashcards/flashcards.module#FlashcardsModule',
+  },
   { path: '**', component: NotFoundPageComponent },
 ];
 
