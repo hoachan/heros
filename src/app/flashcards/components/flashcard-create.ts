@@ -2,9 +2,32 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { Flashcard } from './../models/flashcard';
 
+
 @Component({
   selector: 'bc-book-detail',
   template: `
+    <div class="flashcard-create-container">
+      <mat-card>
+        <mat-card-title>
+          <h1>1</h1>
+        </mat-card-title>
+        <mat-card-content>
+            <mat-form-field>
+              <textarea matInput placeholder="Textarea"></textarea>
+            </mat-form-field>
+
+            <mat-form-field>
+              <textarea matInput placeholder="Textarea"></textarea>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button class="submit-flashcard">
+            Save Flashcard
+          </button>
+        </mat-card-actions>
+      </mat-card>
+
+    </div>
     <mat-card>
       <mat-card-title-group>
         <mat-card-title>Hello</mat-card-title>
@@ -16,11 +39,11 @@ import { Flashcard } from './../models/flashcard';
         <p>Footer</p>
       </mat-card-footer>
       <mat-card-actions align="start">
-        <button>
+        <button mat-button>
         Remove Book from Collection
         </button>
 
-        <button>
+        <button mat-button>
         Add Book to Collection
         </button>
       </mat-card-actions>
@@ -54,6 +77,11 @@ import { Flashcard } from './../models/flashcard';
     mat-card-footer {
       padding: 0 25px 25px;
       position: relative;
+    }
+
+    .submit-flashcard {
+      background : #3f51b5;
+      color : white;
     }
   `,
   ],

@@ -26,6 +26,9 @@ import * as Auth from '../../auth/actions/auth';
         <bc-nav-item *ngIf="!(loggedIn$ | async)" routerLink="/login">
           Sign In
         </bc-nav-item>
+        <bc-nav-item routerLink="/flashcards" icon="book" hint="View your flashcards collection">
+          Flashcards
+        </bc-nav-item>
         <bc-nav-item (navigate)="logout()" *ngIf="loggedIn$ | async">
           Sign Out
         </bc-nav-item>
