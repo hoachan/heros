@@ -39,6 +39,6 @@ export class IndexDbRepositoryService{
      * @id : array<id>
      */
      delete(nameTable : string, id : any){
-        return this.db.executeWrite('books', 'delete', id)
+        return this.db.executeWrite(nameTable, 'delete', id)
      }
 }
