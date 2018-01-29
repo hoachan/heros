@@ -104,17 +104,17 @@ export class FlashcardCreateComponent implements OnInit {
   public db ?: any ;
   public fcForm : FormGroup;
 
-  private URL         = 'input url';
+  private URL         = 'https://flash-e5dae.firebaseio.com/';
   constructor(
     private http : HttpClient,
   ){
 
-    var config = {
-      /**
-       * input config
-       */
-    }
-    firebase.initializeApp(config);
+    // var config = {
+    //   /**
+    //    * input config
+    //    */
+    // }
+    // firebase.initializeApp(config);
   }
 
   getDataFromFirebase(){
