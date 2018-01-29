@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { BooksModule } from './books/books.module';
+import { FlashcardsModule } from './flashcards/flashcards.module';
 
 import { CustomRouterStateSerializer } from './shared/utils';
 /**
@@ -35,6 +36,7 @@ import { schema } from './db';
     CoreModule,
     AuthModule,
     BooksModule,
+    FlashcardsModule,
     /**
      * StoreModule.forRoot is imported once in the root module, accepting a reducer
      * function or object map of reducer functions. If passed an object of
