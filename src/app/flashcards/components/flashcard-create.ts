@@ -104,7 +104,7 @@ export class FlashcardCreateComponent implements OnInit {
   public db ?: any ;
   public fcForm : FormGroup;
 
-  private URL         = 'https://flash-e5dae.firebaseio.com/';
+  private URL         = 'input url in here';
   constructor(
     private http : HttpClient,
   ){
