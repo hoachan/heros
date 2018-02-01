@@ -6,12 +6,19 @@ import { Component, Output, EventEmitter, ViewChild, Input } from '@angular/core
   <!-- Notification toggle button -->
     <button 
         mat-icon-button
-        matTooltip="Notifications" 
-        [style.overflow]="'visible'" 
-        class="topbar-button-right">
+        class="topbar-button-right img-button"
+        [matMenuTriggerFor]="menuNotification"
+    >
         <mat-icon>notifications</mat-icon>
         <span class="mat-bg-warn notification-number">3</span>
     </button>
+    <mat-menu #menuNotification="matMenu">
+        <mat-card>
+            <mat-card-content>
+                <p>これはやばいですね</p>
+            </mat-card-content>
+        </mat-card>
+    </mat-menu>
 
     <button mat-icon-button [matMenuTriggerFor]="menu" class="topbar-button-right img-button">
         <img src="assets/images/face-7.jpg" alt="images has not">
@@ -35,7 +42,13 @@ import { Component, Output, EventEmitter, ViewChild, Input } from '@angular/core
         </button>
     </mat-menu>
   `,
+  styles: [`
+            .notification {
+                background-color : red;
+            }
+            `],
 })
 export class LeftToolbarComponent {
+    
     @Output() openSubMenu = new EventEmitter();
 }
