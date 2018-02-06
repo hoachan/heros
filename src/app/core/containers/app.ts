@@ -33,7 +33,10 @@ import * as Auth from '../../auth/actions/auth';
           Sign Out
         </bc-nav-item>
       </bc-sidenav>
-      <router-outlet></router-outlet>
+      <!-- App content -->
+      <div class="rightside-content-hold">
+        <router-outlet></router-outlet>
+      </div>
     </bc-layout>
   `,
   styles : [

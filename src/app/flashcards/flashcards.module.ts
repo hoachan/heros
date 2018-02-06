@@ -6,6 +6,11 @@ import { FlashcardsRoutingModule } from './flashcards-routing.module';
 
 import { FlashcardsComponentsModule } from './components/index';
 
+/**
+ * egret
+ */
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 @NgModule({
   imports: [
     CommonModule,
