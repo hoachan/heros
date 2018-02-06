@@ -1,5 +1,5 @@
 :host {
-    display: flex;
+    display: row;
     justify-content: center;
     margin: 25px 0;
 }
