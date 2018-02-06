@@ -34,9 +34,7 @@ import * as Auth from '../../auth/actions/auth';
         </bc-nav-item>
       </bc-sidenav>
       <!-- App content -->
-      <div class="rightside-content-hold">
-        <router-outlet></router-outlet>
-      </div>
+      <router-outlet></router-outlet>
     </bc-layout>
   `,
   styles : [
