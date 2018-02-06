@@ -1,11 +1,19 @@
 <form [formGroup]="basicForm">
 <mat-card  class="p-0">
     <mat-card-title class="flashcard-title">
-        <div class="card-title-text">Form validation</div>
+        <div class="card-title-text">Form validation </div>
+        <!-- This fills the remaining space of the current row -->
+        <span class="fill-remaining-space"></span>
+        <button 
+            mat-icon-button
+            (click)="changeView()"
+        >
+            <mat-icon>{{cardViewStatus}}</mat-icon>
+        </button>
     </mat-card-title>
-    <mat-card-content>
+    <mat-card-content *ngIf="isView">
         <div fxLayout="row" fxLayoutWrap="wrap">
-            <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1" >
+            <div fxFlex="100" fxFlex.gt-xs="30" class="pr-1" >
                     <div class="pb-1">
                         <mat-form-field class="full-width">
                             <input
@@ -21,6 +29,25 @@
                         <small 
                         *ngIf="basicForm.controls['username'].hasError('maxlength') && basicForm.controls['username'].touched" 
                         class="form-error-msg"> Username can not contain more than {{basicForm.controls['username'].errors.maxlength.requiredLength}} characters </small>
+                    </div>
+                </div>
+                <div fxFlex="100" fxFlex.gt-xs="20" class="pr-1" >
+                    <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <input
+                            matInput
+                            name="username"
+                            formControlName="username"
+                            placeholder="Username (Min Length: 4, Max Length: 9)"
+                            value="">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-select placeholder="Favorite food">
+                                <mat-option *ngFor="let imgViewSelect of imgViewSelects" [value]="imgViewSelect.value">
+                                {{ imgViewSelect.viewValue }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
                     </div>
                 </div>
                 <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1" >

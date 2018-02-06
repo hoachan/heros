@@ -14,6 +14,13 @@ export class FlashcardCreateComponent implements OnInit {
 
   public db ?: any ;
   public fcForm : FormGroup;
+  public isView : boolean = true;
+  public cardViewStatus : string = 'visibility';
+
+  imgViewSelects = [
+    {value: 'steak-0', viewValue: 'Frontend'},
+    {value: 'pizza-1', viewValue: 'Backend'},
+  ];
 
   formData = {}
   console = console;
@@ -96,5 +103,12 @@ export class FlashcardCreateComponent implements OnInit {
 
   ngOnInit() {
     this.initializeForm();
+  }
+
+  changeView(){
+    this.isView = !this.isView;
+
+    this.cardViewStatus = (this.isView) ? 'visibility' : 'visibility_off';
+    console.log(this.cardViewStatus);
   }
 }
