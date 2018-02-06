@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { PipesModule } from '../../shared/pipes';
 import { MaterialModule } from '../../material';
 
-import { FlashcardCreateComponent } from './flashcard-create';
+import { FlashcardCreateComponent } from './flashcard-create/flashcard-create';
 
 export const COMPONENTS = [
   FlashcardCreateComponent,
