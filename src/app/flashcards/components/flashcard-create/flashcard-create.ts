@@ -7,7 +7,7 @@ import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 @Component({
   selector: 'fc-create-card',
-  templateUrl : './flashcard-create.html',
+  templateUrl : './flashcard-create-main.html',
   styleUrls    : ['./flashcard-create.css'],
 })
 export class FlashcardCreateComponent implements OnInit {
