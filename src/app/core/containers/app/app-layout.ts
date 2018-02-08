@@ -48,9 +48,9 @@ export class AppComponent {
     /**
      * sidenave open
      */
-    // this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    // this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    // this.mobileQuery.addListener(this._mobileQueryListener);
+    this.mobileQuery = window.matchMedia(`(max-width: 960px)`);
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
   closeSidenav() {
