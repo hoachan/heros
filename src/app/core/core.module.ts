@@ -1,6 +1,6 @@
 import { MaterialModule } from '../material';
 import { NotFoundPageComponent } from './containers/not-found-page';
-import { AppComponent } from './containers/app';
+import { AppComponent } from './containers/app/app-layout';
 
 import { LayoutComponent } from './components/layout';
 import { ToolbarComponent } from './components/toolbar';
@@ -29,7 +29,7 @@ export const COMPONENTS = [
   imports: [
     CommonModule,
     CoreRoutingModule,
-    MaterialModule
+    MaterialModule,
   ],
   declarations: COMPONENTS,
   exports : COMPONENTS

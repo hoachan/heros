@@ -5,7 +5,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { environment } from '../environments/environment';
 
-import { AppComponent } from './core/containers/app';
+import { AppComponent } from './core/containers/app/app-layout';
 import { AppRoutingModule } from './app-routing.module';
 
 import { CoreModule } from './core/core.module';
