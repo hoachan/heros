@@ -17,7 +17,7 @@ import * as Auth from '../../../auth/actions/auth';
 })
 export class AppComponent {
   mobileQuery: MediaQueryList;
-
+  editCssStyle : string;
   fillerNav = Array(50).fill(0).map((_, i) => `Nav Item ${i + 1}`);
 
   fillerContent = Array(50).fill(0).map(() =>
@@ -83,6 +83,10 @@ export class AppComponent {
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
+  }
+
+  openSidenav2(){
+
   }
 
 }

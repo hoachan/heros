@@ -9,6 +9,8 @@ import { SidenavComponent } from './components/sidenav';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 import { CoreRoutingModule } from './core-routing.module';
 import { NavItemComponent } from './components/nav-item';
 import { LeftToolbarComponent } from './components/left-toolbar';
@@ -30,6 +32,7 @@ export const COMPONENTS = [
     CommonModule,
     CoreRoutingModule,
     MaterialModule,
+    FlexLayoutModule,
   ],
   declarations: COMPONENTS,
   exports : COMPONENTS
