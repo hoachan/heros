@@ -1,9 +1,9 @@
 <div class="main-container" [class.main-is-mobile]="mobileQuery.matches">
     <bc-header
         (openMenu)="snav.toggle()"
-   ></bc-header>   
+   ></bc-header> 
     <mat-sidenav-container class="main-sidenav-container"
-                            [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+                            [style.marginTop.px]="mobileQuery.matches ? 56 : 0">  
         <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
                     [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
             <mat-nav-list>

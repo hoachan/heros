@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NotFoundPageComponent } from './core/containers/not-found-page';
+import { AppComponent } from './core/containers/app/app-layout';
 
 import { AuthGuard } from './auth/services/auth-guard.service';
+
 
 const routes: Routes = [
   {
     path : '',
-    redirectTo : '/core',
+    redirectTo : 'flashcards',
     pathMatch : 'full'
   },
   {
