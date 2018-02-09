@@ -78,8 +78,7 @@ export class AppComponent {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
-  openSidenav2(){
-
+  isNavOver(){
+    return this.mobileQuery.matches ? false : true;
   }
-
 }
