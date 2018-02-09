@@ -1,7 +1,7 @@
 <div class="main-container" [class.main-is-mobile]="mobileQuery.matches">
     <bc-header
         (openMenu)="snav.toggle()"
-   ></bc-header> 
+   ></bc-header>
     <mat-sidenav-container class="main-sidenav-container"
                             [style.marginTop.px]="mobileQuery.matches ? 56 : 0">  
         <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
@@ -11,9 +11,23 @@
                 <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a>
             </mat-nav-list>
         </mat-sidenav>
-    
+
         <mat-sidenav-content>
-            <router-outlet></router-outlet>
+            <div class="breadcrumb-bar">
+                <ul class="breadcrumb">
+                    <li><a routerLink="/flashcards"> Flashcard</a></li>
+                </ul>
+            </div>
+            <!-- App content -->
+            <div class="rightside-content-hold">
+                <div class="view-loader" *ngIf="isModuleLoading">
+                    <div class="spinner">
+                    <div class="double-bounce1 mat-bg-accent"></div>
+                    <div class="double-bounce2 mat-bg-primary"></div>
+                    </div>
+                </div>
+                <router-outlet></router-outlet>
+            </div>
         </mat-sidenav-content>
     </mat-sidenav-container>
 </div>

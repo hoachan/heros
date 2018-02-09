@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+.breadcrumb-bar,
+.default-bg {
+    background: #ffffff !important;
+}
 /*
  *
  *   EGRET - Angular Material Design Admin Template

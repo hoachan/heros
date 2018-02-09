@@ -21,11 +21,6 @@ import { Component, Output, EventEmitter } from '@angular/core';
   `,
   styles : [
     `
-    .example-fill-remaining-space {
-      /* This fills the remaining space, by using flexbox. 
-         Every toolbar row uses a flexbox row layout. */
-      flex: 1 1 auto;
-    }
     `
   ],
 })
