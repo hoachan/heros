@@ -3,7 +3,6 @@ import { NotFoundPageComponent } from './containers/not-found-page';
 import { AppComponent } from './containers/app/app-layout';
 
 import { LayoutComponent } from './components/layout';
-import { ToolbarComponent } from './components/toolbar';
 import { SidenavComponent } from './components/sidenav';
 
 import { NgModule } from '@angular/core';
@@ -14,6 +13,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { CoreRoutingModule } from './core-routing.module';
 import { NavItemComponent } from './components/nav-item';
 import { LeftToolbarComponent } from './components/left-toolbar';
+import { RightToolbarComponent } from './components/right-toolbar';
 import { HeaderComponent } from './components/header';
 
 export const COMPONENTS = [
@@ -22,7 +22,7 @@ export const COMPONENTS = [
   LayoutComponent,
   NavItemComponent,
   SidenavComponent,
-  ToolbarComponent,
+  RightToolbarComponent,
   LeftToolbarComponent,
   HeaderComponent,
 ];

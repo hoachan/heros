@@ -1,0 +1,26 @@
+<bc-layout>
+        <bc-header
+         (openMenu)="clickMenu()"
+        ></bc-header> 
+        <bc-sidenav [open]="showSidenav$ | async">
+          <bc-nav-item *ngIf="loggedIn$ | async" routerLink="/books" icon="book" hint="View your book collection">
+            My Collection
+          </bc-nav-item>
+          <bc-nav-item *ngIf="loggedIn$ | async" routerLink="/books/find" icon="search" hint="Find your next book!">
+            Browse Books
+          </bc-nav-item>
+          <bc-nav-item *ngIf="!(loggedIn$ | async)" routerLink="/login">
+            Sign In
+          </bc-nav-item>
+          <bc-nav-item routerLink="/flashcards" icon="book" hint="View your flashcards collection">
+            Flashcards
+          </bc-nav-item>
+          <bc-nav-item (navigate)="logout()" *ngIf="loggedIn$ | async">
+            Sign Out
+          </bc-nav-item>
+        </bc-sidenav>
+        <!-- App content -->
+        <div class="content-layout">
+        <router-outlet></router-outlet>
+        </div>
+      </bc-layout>

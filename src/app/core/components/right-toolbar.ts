@@ -1,17 +1,23 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'bc-toolbar',
+  selector: 'bc-right-toolbar',
   template: `
-    <mat-toolbar color="primary">
       <button mat-icon-button (click)="openMenu.emit()">
         <mat-icon>menu</mat-icon>
       </button>
-      <ng-content></ng-content>
-      <!-- This fills the remaining space of the current row -->
-      <span class="example-fill-remaining-space"></span>
-      <bc-left-toolbar></bc-left-toolbar>
-    </mat-toolbar>
+      Hoa Chan
+      <!-- Search form -->
+      <div 
+          fxFlex
+          fxHide.lt-sm="true" 
+          class="search-bar search-widh-bar"
+          >
+          <form class="top-search-form">
+          <mat-icon role="img">search</mat-icon>
+          <input autofocus="true" placeholder="Search" type="text">
+          </form>
+      </div>
   `,
   styles : [
     `
@@ -23,6 +29,6 @@ import { Component, Output, EventEmitter } from '@angular/core';
     `
   ],
 })
-export class ToolbarComponent {
+export class RightToolbarComponent {
   @Output() openMenu = new EventEmitter();
 }
