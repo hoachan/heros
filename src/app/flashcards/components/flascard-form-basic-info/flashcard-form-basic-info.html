@@ -1,0 +1,80 @@
+<div fxLayout="row" fxLayoutWrap="wrap">
+    <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="calc(100% - 300px)">
+        <mat-card class="p-0">
+            <mat-card-title class="">
+                <div class="card-title-text">
+                    <span>Basic Card</span>
+                </div>
+                <!-- <mat-divider></mat-divider> -->
+                <span fxFlex></span>
+                <button class="card-control"
+                    mat-icon-button
+                    (click)="changeView()"
+                >
+                <mat-icon>{{cardViewStatus}}</mat-icon>
+                </button>
+            </mat-card-title>
+            <mat-card-content *ngIf="isView">
+                <form  [formGroup]="basicForm" (ngSubmit)="onSubmit()">
+                    <mat-form-field class="full-width">
+                        <input
+                        matInput
+                        placeholder="Card Title"
+                        formControlName="title">
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <textarea
+                        matInput 
+                        matTextareaAutosize matAutosizeMinRows="2"
+                        matAutosizeMaxRows="10"
+                        placeholder="description"
+                        formControlName="description"
+                        ></textarea>
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <mat-chip-list #chipList>
+                            <mat-chip *ngFor="let tag of tags" [selectable]="selectable"
+                                        [removable]="removable" (remove)="removeTag(tag)">
+                                {{tag.name}}
+                                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                            </mat-chip>
+                            <input placeholder="New Tag..."
+                                    [matChipInputFor]="chipList"
+                                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                    [matChipInputAddOnBlur]="addOnBlur"
+                                    (matChipInputTokenEnd)="addTag($event)"
+                                    formControlName="tags"        
+                            />
+                        </mat-chip-list>
+                    </mat-form-field>
+                    <button
+                        type="submit"
+                        mat-raised-button color="primary">Save</button>
+                </form>
+                </mat-card-content>
+        </mat-card>
+    </div>
+    <div fxFlex="100" fxFlex.gt-md="300px" fxFlex.gt-sm="50" *ngIf="isView">
+        <mat-card class="p-0">
+            <mat-card-title class="mat-bg-accent m-0">
+                <div class="card-title-text">
+                    <span>{{basicForm.value.title}}</span>
+                    <span fxFlex></span>
+                    <button class="card-control" mat-icon-button>
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                </div>
+            </mat-card-title>
+            <img mat-card-image src="assets/images/photo-2.jpg">
+            <mat-card-content>
+                <p [innerHtml]="basicForm.value.description"></p>
+                <mat-divider class="mb-1"></mat-divider>
+                <mat-chip-list class="mt-1">
+                    <mat-chip *ngFor="let tag of tags">
+                        {{tag.name}}
+                    </mat-chip>
+                </mat-chip-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

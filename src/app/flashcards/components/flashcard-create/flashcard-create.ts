@@ -4,7 +4,7 @@ import { Flashcard } from './../../models/flashcard';
 
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
-import { CustomValidators } from 'ng2-validation';
+
 @Component({
   selector: 'fc-create-card',
   templateUrl : './flashcard-create-main.html',
@@ -54,7 +54,7 @@ export class FlashcardCreateComponent implements OnInit {
 
   /*egret form*/
   let password = new FormControl('', Validators.required);
-  let confirmPassword = new FormControl('', CustomValidators.equalTo(password));
+  let confirmPassword = new FormControl('');
 
   this.basicForm = new FormGroup({
     username: new FormControl('', [
@@ -68,12 +68,10 @@ export class FlashcardCreateComponent implements OnInit {
       Validators.required,
       Validators.email
     ]),
-    website: new FormControl('', CustomValidators.url),
+    website: new FormControl(''),
     date: new FormControl(),
-    cardno: new FormControl('', [
-      CustomValidators.creditCard
-    ]),
-    phone: new FormControl('', CustomValidators.phone('BD')),
+    cardno: new FormControl(''),
+    phone: new FormControl(''),
     password: password,
     confirmPassword: confirmPassword,
     gender: new FormControl('', [
@@ -98,7 +96,7 @@ export class FlashcardCreateComponent implements OnInit {
     }
 
     console.log(newFlashcard);
-    this.http.put(this.URL + '/flashcard.json', newFlashcard).subscribe(data => console.log(data));
+    // this.http.put(this.URL + '/flashcard.json', newFlashcard).subscribe(data => console.log(data));
   }
 
   ngOnInit() {
