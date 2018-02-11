@@ -22,6 +22,12 @@
                         placeholder="Card Title"
                         formControlName="title">
                     </mat-form-field>
+                    <mat-form-field>
+                        <div class="mb-1 mt-1">
+                            <p>Upload a profile picture</p>
+                            <input type="file" ng2FileSelect [uploader]="uploader" />
+                        </div>
+                    </mat-form-field>
                     <mat-form-field class="full-width">
                         <textarea
                         matInput 
@@ -34,7 +40,10 @@
                     <mat-form-field class="full-width">
                         <mat-chip-list #chipList>
                             <mat-chip *ngFor="let tag of tags" [selectable]="selectable"
-                                        [removable]="removable" (remove)="removeTag(tag)">
+                                        [removable]="removable" (remove)="removeTag(tag)"
+                                        selected="true"
+                                        [style.background]="tag.color"
+                                        >
                                 {{tag.name}}
                                 <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
                             </mat-chip>
@@ -47,6 +56,9 @@
                             />
                         </mat-chip-list>
                     </mat-form-field>
+                    <small 
+                    *ngIf="!addTagAble" 
+                    class="form-error-msg"> max tags is 5 </small>
                     <button
                         type="submit"
                         mat-raised-button color="primary">Save</button>
@@ -68,12 +80,19 @@
             <img mat-card-image src="assets/images/photo-2.jpg">
             <mat-card-content>
                 <p [innerHtml]="basicForm.value.description"></p>
-                <mat-divider class="mb-1"></mat-divider>
-                <mat-chip-list class="mt-1">
-                    <mat-chip *ngFor="let tag of tags">
-                        {{tag.name}}
-                    </mat-chip>
-                </mat-chip-list>
+                <mat-divider></mat-divider>
+                <div class="form-chip-list">
+                    <mat-chip-list>
+                            <mat-chip 
+                                *ngFor="let tag of tags"
+                                selected="true"
+                                [style.background]="tag.color"
+                                [style.color]="black"
+                            >
+                                {{tag.name}}
+                            </mat-chip>
+                    </mat-chip-list>
+                </div>
             </mat-card-content>
         </mat-card>
     </div>

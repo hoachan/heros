@@ -28,7 +28,16 @@ export class FlashcardFormBasicInfoComponent implements OnInit {
   selectable: boolean = true;
   removable: boolean = true;
   addOnBlur: boolean = true;
+  addTagAble : boolean = true;
+  max_tags : number = 5;
   public tags = [];
+  colors = [
+    "#800080", //purple
+    "#008000", //
+    "#0000FF", //blue
+    "#FF0000", //red
+    "#000080", //navy
+  ];
 
   // Enter, comma
   separatorKeysCodes = [ENTER, COMMA];
@@ -62,7 +71,7 @@ export class FlashcardFormBasicInfoComponent implements OnInit {
     let newFlashcard  = {
         title : value.title,
         description : value.description,
-        tags : value.tags
+        tags : this.tags
     }
 
     console.log(newFlashcard);
@@ -85,8 +94,8 @@ export class FlashcardFormBasicInfoComponent implements OnInit {
     let value = event.value;
 
     // Add our fruit
-    if ((value || '').trim()) {
-      this.tags.push({ name: value.trim() });
+    if ((value || '').trim() && this.checkStatusTag()) {
+      this.tags.push({ name: value.trim() , color : this.colors[this.tags.length]});
     }
 
     // Reset the input value
@@ -95,11 +104,18 @@ export class FlashcardFormBasicInfoComponent implements OnInit {
     }
   }
 
-  removeTag(fruit: any): void {
-    let index = this.tags.indexOf(fruit);
+  removeTag(tag: any): void {
+    let index = this.tags.indexOf(tag);
 
     if (index >= 0) {
       this.tags.splice(index, 1);
     }
+
+    this.checkStatusTag();
+  }
+
+  checkStatusTag() : boolean{
+    this.addTagAble = (this.tags.length > this.max_tags - 1) ? false : true;
+    return this.addTagAble;
   }
 }

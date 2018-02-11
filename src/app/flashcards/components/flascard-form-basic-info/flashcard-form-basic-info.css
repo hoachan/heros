@@ -4,9 +4,13 @@ mat-card-title {
 }
 
 .form-chip-list {
-    margin-top : 10px!important;
+    margin-top : 30px!important;
 }
 .mat-bg-accent {
     background-color: #ffc107;
     color: black;
+}
+
+.form-error-msg{
+    font-size : 2em;
 }
