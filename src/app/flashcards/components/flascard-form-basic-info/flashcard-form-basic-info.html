@@ -22,14 +22,6 @@
                         placeholder="Card Title"
                         formControlName="title">
                     </mat-form-field>
-                    <label for="file_photo" class="file-photo">
-                        ＋写真を選択
-                        <input
-                            type="file"
-                            placeholder="upload image"
-                            (change)="handleFileInput($event.target.files)"
-                        >
-                    </label>
                     <mat-form-field class="full-width">
                         <textarea
                         matInput 
@@ -61,6 +53,17 @@
                     <small 
                     *ngIf="!addTagAble" 
                     class="form-error-msg"> max tags is 5 </small>
+
+                    <div class="full-width">
+                        <label for="file_photo" class="file-photo">
+                                ＋写真を選択
+                                <input
+                                    type="file"
+                                    placeholder="upload image"
+                                    (change)="handleFileInput($event.target.files)"
+                                >
+                        </label>
+                    </div>
                     <button
                         type="submit"
                         mat-raised-button color="primary">Save</button>

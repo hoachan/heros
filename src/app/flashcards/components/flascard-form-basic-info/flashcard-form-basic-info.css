@@ -21,7 +21,7 @@ mat-card-title {
     border-radius: 12px;
     overflow: hidden;
     position: relative;
-    width : 40%;
+    cursor: pointer;
 }
 
 .file-photo [type=file] {
