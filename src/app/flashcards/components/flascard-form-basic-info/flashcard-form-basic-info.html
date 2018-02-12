@@ -22,11 +22,14 @@
                         placeholder="Card Title"
                         formControlName="title">
                     </mat-form-field>
-                        <input 
-                        type="file"
-                        placeholder="upload image"
-                        (change)="handleFileInput($event.target.files)"
+                    <label for="file_photo" class="file-photo">
+                        ＋写真を選択
+                        <input
+                            type="file"
+                            placeholder="upload image"
+                            (change)="handleFileInput($event.target.files)"
                         >
+                    </label>
                     <mat-form-field class="full-width">
                         <textarea
                         matInput 
@@ -79,9 +82,7 @@
             </mat-card-title>
             
             <!-- view image -->
-            <!-- <img mat-card-image src="assets/images/photo-2.jpg"> -->
-
-            <img mat-card-image [src]="currentImage">
+            <img mat-card-image [src]="currentImage" id="uploadImg">
             <!-- view content -->
             <mat-card-content>
                 <p [innerHtml]="basicForm.value.description"></p>
@@ -93,13 +94,15 @@
                                 *ngFor="let tag of tags"
                                 selected="true"
                                 [style.background]="tag.color"
-                                [style.color]="black"
                             >
                                 {{tag.name}}
                             </mat-chip>
                     </mat-chip-list>
                 </div>
             </mat-card-content>
+            <mat-card-footer>
+
+            </mat-card-footer>
         </mat-card>
     </div>
 </div>

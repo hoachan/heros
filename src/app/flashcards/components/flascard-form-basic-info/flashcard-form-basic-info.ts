@@ -18,7 +18,7 @@ import {MatChipInputEvent} from '@angular/material';
   templateUrl : './flashcard-form-basic-info.html',
   styleUrls    : ['./flashcard-form-basic-info.css'],
 })
-export class FlashcardFormBasicInfoComponent implements OnInit {
+export class FlashcardFormBasicInfoComponent implements OnInit{
 
   public db ?: any ;
   public isView : boolean = true;
@@ -39,6 +39,7 @@ export class FlashcardFormBasicInfoComponent implements OnInit {
     "#FF0000", //red
     "#000080", //navy
   ];
+  public currentColorIndex : number = 0;
 
   /**
    * upload image file
@@ -103,7 +104,9 @@ export class FlashcardFormBasicInfoComponent implements OnInit {
 
     // Add our fruit
     if ((value || '').trim() && this.checkStatusTag()) {
-      this.tags.push({ name: value.trim() , color : this.colors[this.tags.length]});
+      this.currentColorIndex = (this.currentColorIndex >= 5) ? 0 : this.currentColorIndex;
+      this.tags.push({ name: value.trim() , color : this.colors[this.currentColorIndex]});
+      this.currentColorIndex++;
     }
 
     // Reset the input value
@@ -128,17 +131,23 @@ export class FlashcardFormBasicInfoComponent implements OnInit {
   }
 
   handleFileInput(files) {
-    var reader = new FileReader();
-    console.log(files);
-    var that = this;
-    reader.onload = function (e) {
-      that.currentImage = reader.result;
-      console.log(reader.result);
-    };
 
     this.fileToUpload = files.item(0);
-    reader.readAsDataURL(this.fileToUpload);
-console.log(this.fileToUpload);
+    this.updateCurrentImage();
     // console.log(this.fileToUpload);
+  }
+
+  updateCurrentImage(){
+    var reader = new FileReader();
+    var that = this;
+    reader.onloadend = function () {
+      that.currentImage = reader.result;
+      let output = <HTMLImageElement>document.getElementById('uploadImg');
+      output.src  = that.currentImage;
+      console.log(reader.result);
+    }
+
+    if(this.fileToUpload)
+    reader.readAsDataURL(this.fileToUpload);
   }
 }
