@@ -22,14 +22,11 @@
                         placeholder="Card Title"
                         formControlName="title">
                     </mat-form-field>
-                    <mat-form-field>
-                        <div class="mb-1 mt-1">
-                            <p>Upload a profile picture</p>
-                            <input 
-                                type="file" ng2FileSelect 
-                                [uploader]="uploader" />
-                        </div>
-                    </mat-form-field>
+                        <input 
+                        type="file"
+                        placeholder="upload image"
+                        (change)="handleFileInput($event.target.files)"
+                        >
                     <mat-form-field class="full-width">
                         <textarea
                         matInput 
@@ -70,6 +67,7 @@
     </div>
     <div fxFlex="100" fxFlex.gt-md="300px" fxFlex.gt-sm="50" *ngIf="isView">
         <mat-card class="p-0">
+            <!-- view tittle -->
             <mat-card-title class="mat-bg-accent m-0">
                 <div class="card-title-text">
                     <span>{{basicForm.value.title}}</span>
@@ -79,10 +77,16 @@
                     </button>
                 </div>
             </mat-card-title>
-            <img mat-card-image src="assets/images/photo-2.jpg">
+            
+            <!-- view image -->
+            <!-- <img mat-card-image src="assets/images/photo-2.jpg"> -->
+
+            <img mat-card-image [src]="currentImage">
+            <!-- view content -->
             <mat-card-content>
                 <p [innerHtml]="basicForm.value.description"></p>
                 <mat-divider></mat-divider>
+                <!-- view all tags -->
                 <div class="form-chip-list">
                     <mat-chip-list>
                             <mat-chip 

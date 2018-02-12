@@ -1,3 +1,4 @@
+import { FileUploader } from 'ng2-file-upload';
 import { Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
 
 import { Flashcard } from './../../models/flashcard';
@@ -39,6 +40,12 @@ export class FlashcardFormBasicInfoComponent implements OnInit {
     "#000080", //navy
   ];
 
+  /**
+   * upload image file
+   */
+  fileToUpload: File = null;
+  public currentImage : any = "assets/images/photo-2.jpg";
+
   // Enter, comma
   separatorKeysCodes = [ENTER, COMMA];
 
@@ -61,6 +68,7 @@ export class FlashcardFormBasicInfoComponent implements OnInit {
     this.basicForm = new FormGroup({
       'title'         : new FormControl(title, Validators.required),
       'description'   : new FormControl(description, Validators.required),
+      'image'         : new FormControl(''),
       'tags'          : new FormControl('')
     })
   }
@@ -117,5 +125,20 @@ export class FlashcardFormBasicInfoComponent implements OnInit {
   checkStatusTag() : boolean{
     this.addTagAble = (this.tags.length > this.max_tags - 1) ? false : true;
     return this.addTagAble;
+  }
+
+  handleFileInput(files) {
+    var reader = new FileReader();
+    console.log(files);
+    var that = this;
+    reader.onload = function (e) {
+      that.currentImage = reader.result;
+      console.log(reader.result);
+    };
+
+    this.fileToUpload = files.item(0);
+    reader.readAsDataURL(this.fileToUpload);
+console.log(this.fileToUpload);
+    // console.log(this.fileToUpload);
   }
 }
