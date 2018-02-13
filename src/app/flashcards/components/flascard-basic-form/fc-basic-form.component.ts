@@ -14,11 +14,11 @@ import {ENTER, COMMA} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material';
 
 @Component({
-  selector: 'fc-flashcard-form-basic-info',
-  templateUrl : './flashcard-form-basic-info.html',
-  styleUrls    : ['./flashcard-form-basic-info.css'],
+  selector: 'fc-basic-form',
+  templateUrl : './fc-basic-form.html',
+  styleUrls    : ['./fc-basic-form.css'],
 })
-export class FlashcardFormBasicInfoComponent implements OnInit{
+export class FlashcardBasicFormComponent implements OnInit{
 
   public db ?: any ;
   public isView : boolean = true;

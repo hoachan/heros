@@ -8,11 +8,11 @@ import { PipesModule } from '../../shared/pipes';
 import { MaterialModule } from '../../material';
 
 import { FlashcardCreateComponent } from './flashcard-create/flashcard-create';
-import { FlashcardFormBasicInfoComponent } from './flascard-form-basic-info/flashcard-form-basic-info';
+import { FlashcardBasicFormComponent } from './flascard-basic-form/fc-basic-form.component';
 
 export const COMPONENTS = [
   FlashcardCreateComponent,
-  FlashcardFormBasicInfoComponent
+  FlashcardBasicFormComponent
 ];
 
 @NgModule({
