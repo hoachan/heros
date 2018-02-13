@@ -152,6 +152,8 @@ export class FlashcardBasicFormComponent implements OnInit{
   }
 
   openDialogCat(){
+    var uploadImg = document.getElementById('upload_img');
+    uploadImg.click();
     console.log("input");
   }
 }

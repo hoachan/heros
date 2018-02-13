@@ -64,28 +64,31 @@
                             </button>
                         </mat-card-title>
                         <mat-card-content>
-                            <div>
-                                <div class="from-url">
-                                        <button 
-                                            mat-raised-button color="primary" class="mr-1"
-                                            (click)="openDialogCat()"
-                                            >
-                                                + from url
-                                        </button>
-                                    </div>
-                                    <div>
-                                        <label for="file_photo" class="file-photo">
-                                                ＋from your computer
-                                                <input
-                                                    type="file"
-                                                    placeholder="upload image"
-                                                    (change)="handleFileInput($event.target.files)"
+                            <div fxLayout="row" fxLayoutWrap="wrap">
+                                    <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="50">
+                                            <button 
+                                                mat-raised-button color="primary" class="mr-1"
+                                                (click)="openDialogCat()"
                                                 >
-                                        </label>
+                                                    + from url
+                                            </button>
+                                            <input
+                                            id="upload_img"
+                                            type="file"
+                                            placeholder="upload image"
+                                            (change)="handleFileInput($event.target.files)"
+                                            visbility="hidden"
+                                            >
+                                    </div>
+                                    <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="50">
+                                            <button 
+                                                mat-raised-button color="primary" class="mr-1"
+                                                (click)="openDialogCat()"
+                                                >
+                                                    + from url
+                                            </button>
                                     </div>
                             </div>
-                            <span fxFlex></span>
-
                         </mat-card-content>
                     </mat-card>
                     <button
