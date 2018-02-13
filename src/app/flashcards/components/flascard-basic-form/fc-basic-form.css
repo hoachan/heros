@@ -43,6 +43,8 @@ mat-card-title {
     border-style: dashed;
     border-width: 0.125rem;
     cursor: pointer;
+    background-image: url("../../../../assets/images/sq-2.jpg");
+    background-repeat: repeat-x;
 }
 .category-img mat-card-title {
     background: #fff;
