@@ -150,4 +150,8 @@ export class FlashcardBasicFormComponent implements OnInit{
     if(this.fileToUpload)
     reader.readAsDataURL(this.fileToUpload);
   }
+
+  openDialogCat(){
+    console.log("input");
+  }
 }

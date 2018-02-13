@@ -55,21 +55,36 @@
                     class="form-error-msg"> max tags is 5 </small>
                     <mat-card class="category-img">
                         <mat-card-title>
-                            <button mat-raised-button color="primary" class="mr-1">
+                            <button 
+                                mat-raised-button color="primary" class="mr-1"
+                                [disableRipple]="true"
+                                >
                                 Add Image For Category
                             </button>
                         </mat-card-title>
                         <mat-card-content>
-                            <div class="full-width">
-                                <label for="file_photo" class="file-photo">
-                                        ＋from your computer
-                                        <input
-                                            type="file"
-                                            placeholder="upload image"
-                                            (change)="handleFileInput($event.target.files)"
-                                        >
-                                </label>
+                            <div>
+                                <div class="from-url">
+                                        <button 
+                                            mat-raised-button color="primary" class="mr-1"
+                                            (click)="openDialogCat()"
+                                            >
+                                                + from url
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <label for="file_photo" class="file-photo">
+                                                ＋from your computer
+                                                <input
+                                                    type="file"
+                                                    placeholder="upload image"
+                                                    (change)="handleFileInput($event.target.files)"
+                                                >
+                                        </label>
+                                    </div>
                             </div>
+                            <span fxFlex></span>
+
                         </mat-card-content>
                     </mat-card>
                     <button

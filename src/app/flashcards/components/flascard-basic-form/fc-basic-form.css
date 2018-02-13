@@ -15,9 +15,10 @@ mat-card-title {
     font-size : 2em;
 }
 
+/* category image style */
 .file-photo {
-    background-color: red;
-    padding: 6px;
+    background-color: #ffc107;
+    padding: 6px 25px;
     border-radius: 12px;
     overflow: hidden;
     position: relative;
@@ -38,7 +39,6 @@ mat-card-title {
     top: 0;
 }
 
-/* category style */
 .category-img {
     border-style: dashed;
     border-width: 0.125rem;
@@ -49,6 +49,14 @@ mat-card-title {
     color: rgb(22, 21, 21);
 }
 
+.category-img .from-url {
+    margin-bottom : 10px;
+}
+
+.category-img .from-url button{
+    width: 200px;
+    background: #ffc107;
+}
 .primary {
     background: #3f51b5;
 }
