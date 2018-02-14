@@ -137,12 +137,15 @@ export class FlashcardBasicFormComponent implements OnInit{
     // console.log(this.fileToUpload);
   }
 
+  /** 
+   * Update image in left monitor after choising image from right view
+  */
   updateCurrentImage(){
     var reader = new FileReader();
     var that = this;
     reader.onloadend = function () {
       that.currentImage = reader.result;
-      let output = <HTMLImageElement>document.getElementById('uploadImg');
+      let output = <HTMLImageElement>document.getElementById('after_upload_img');
       output.src  = that.currentImage;
       console.log(reader.result);
     }
@@ -152,8 +155,12 @@ export class FlashcardBasicFormComponent implements OnInit{
   }
 
   openDialogCat(){
+
+  }
+
+  /**Trigger click of input with type="file" */
+  openWindowImage(){
     var uploadImg = document.getElementById('upload_img');
     uploadImg.click();
-    console.log("input");
   }
 }

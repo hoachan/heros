@@ -59,18 +59,21 @@
                                 mat-raised-button color="primary" class="mr-1"
                                 [disableRipple]="true"
                                 class="full-width"
+                                type="button"
                                 >
                                 Add Image For Category
                             </button>
                         </mat-card-title>
                         <mat-card-content>
                             <div fxLayout="row" fxLayoutWrap="wrap">
-                                    <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="50">
+                                    <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="50" class="btn-upload-img">
                                             <button 
                                                 mat-raised-button color="primary" class="mr-1"
                                                 (click)="openDialogCat()"
+                                                type="button"
+                                                color="warn"
                                                 >
-                                                    + from url
+                                                    By Search URL
                                             </button>
                                             <input
                                             id="upload_img"
@@ -80,12 +83,14 @@
                                             visbility="hidden"
                                             >
                                     </div>
-                                    <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="50">
+                                    <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="50" class="btn-upload-img">
                                             <button 
                                                 mat-raised-button color="primary" class="mr-1"
-                                                (click)="openDialogCat()"
+                                                (click)="openWindowImage()"
+                                                type="button"
+                                                color="warn"
                                                 >
-                                                    + from url
+                                                    By Your Computer
                                             </button>
                                     </div>
                             </div>
@@ -112,7 +117,7 @@
             </mat-card-title>
             
             <!-- view image -->
-            <img mat-card-image [src]="currentImage" id="uploadImg">
+            <img mat-card-image [src]="currentImage" id="after_upload_img">
             <!-- view content -->
             <mat-card-content>
                 <p [innerHtml]="basicForm.value.description"></p>
