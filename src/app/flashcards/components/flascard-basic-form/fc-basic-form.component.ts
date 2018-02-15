@@ -12,6 +12,7 @@ import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
  */
 import {ENTER, COMMA} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material';
+import { FcDialogSearchImgService } from '../fc-dialog/fc-dialog-search-img/fc-dialog-search-img.service';
 
 @Component({
   selector: 'fc-basic-form',
@@ -54,6 +55,7 @@ export class FlashcardBasicFormComponent implements OnInit{
 
   constructor(
     private http : HttpClient,
+    public fcDialogSIService : FcDialogSearchImgService
   ){
     this.initializeForm();
   }
@@ -155,7 +157,14 @@ export class FlashcardBasicFormComponent implements OnInit{
   }
 
   openDialogCat(){
-
+    let tempTitle = 'Confirm dialog';
+    let tempText = 'Just click a button!';
+    let selectedOption;
+    this.fcDialogSIService.confirm({title: tempTitle, message: tempText})
+      .subscribe((result) => {
+        selectedOption = result;
+        console.log(selectedOption);
+      });
   }
 
   /**Trigger click of input with type="file" */

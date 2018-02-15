@@ -9,10 +9,11 @@ import { MaterialModule } from '../../material';
 
 import { FlashcardCreateComponent } from './flashcard-create/flashcard-create';
 import { FlashcardBasicFormComponent } from './flascard-basic-form/fc-basic-form.component';
+import { FcDialogSearchImgModule } from './fc-dialog/fc-dialog-search-img/fc-dialog-search-img.module';
 
 export const COMPONENTS = [
   FlashcardCreateComponent,
-  FlashcardBasicFormComponent
+  FlashcardBasicFormComponent,
 ];
 
 @NgModule({
@@ -23,6 +24,7 @@ export const COMPONENTS = [
     RouterModule,
     PipesModule,
     FlexLayoutModule,
+    FcDialogSearchImgModule,
   ],
   declarations: COMPONENTS,
   exports: COMPONENTS,
