@@ -7,11 +7,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FcSearchImgComponent } from './fc-search-img.component';
 import { MaterialModule } from '../../../material';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
-    FlexLayoutModule
+    ReactiveFormsModule,
+    FlexLayoutModule,
   ],
   exports: [FcSearchImgComponent],
   declarations: [FcSearchImgComponent],

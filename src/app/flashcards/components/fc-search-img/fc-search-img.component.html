@@ -1,16 +1,26 @@
-<div mat-dialog-content>
-  <mat-card class="p-0">
-    <mat-card-title>
-        <div class="card-title-text">
-            <span>{{ data.title }}{{ data.message }}</span>
-        </div>
-      </mat-card-title>
-    <mat-card-content>
-        <button 
-        type="button" 
-        mat-raised-button
-        color="primary" 
-        (click)="choiceImg()">check</button>
-    </mat-card-content>
-  </mat-card>
-</div>
+<mat-card class="p-0">
+  <mat-card-title>
+      <div class="card-title-text">
+          <span>{{ data.title }}</span>
+      </div>
+    </mat-card-title>
+  <mat-card-content>
+      <form [formGroup]="searchForm" (ngSubmit)="submit()">
+          <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutWrap="wrap">
+              <div fxFlex="70"  class="pr-1">
+                  <mat-form-field class="full-width">
+                      <input
+                      matInput
+                      name="searchImg"
+                      formControlName="key"
+                      placeholder="Word">
+                    </mat-form-field>
+              </div>
+              <div fxFlex="30"  class="pr-1">
+                  <button mat-raised-button color="warn" type="button" (click)="reset()" >Clear</button>
+                  <button mat-raised-button color="primary">Save</button>
+              </div>
+          </div>
+      </form>
+  </mat-card-content>
+</mat-card>
