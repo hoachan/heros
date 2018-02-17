@@ -20,6 +20,7 @@ import {
   MatStepperModule,
   MatDialogModule,
   MatChipsModule,
+  MatGridListModule,
 } from '@angular/material';
 
 @NgModule({
@@ -43,6 +44,7 @@ import {
     MatStepperModule,
     MatDialogModule,
     MatChipsModule,
+    MatGridListModule,
   ],
   exports: [
     MatInputModule,
@@ -64,6 +66,7 @@ import {
     MatStepperModule,
     MatDialogModule,
     MatChipsModule,
+    MatGridListModule,
   ],
 })
 export class MaterialModule {}

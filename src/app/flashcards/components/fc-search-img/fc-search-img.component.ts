@@ -14,7 +14,7 @@ export class FcSearchImgComponent implements OnInit {
   public imageInfo : ImageInfo;
   constructor(
     private fb : FormBuilder,
-    public searchImg : FcSearchImgService,
+    public searchImgService : FcSearchImgService,
   ) {}
 
   ngOnInit() {
@@ -23,12 +23,18 @@ export class FcSearchImgComponent implements OnInit {
   
   buildSearchForm(){
     this.searchForm = this.fb.group({
-      key :''
+      key : [''],
     });
   }
 
   submit() {
-    console.log(this.searchForm.value.key);
+    
+    let key = this.searchForm.value.key;
+    let result$;
+    if (key){
+      result$ = this.searchImgService.searchKey(key);
+      result$.subscribe(data => console.log(data));
+    }
   }
 
   reset(){
