@@ -31,7 +31,6 @@ export class FcSearchImgComponent implements OnInit {
   }
 
   submit() {
-    
     let key = this.searchForm.value.key;
     let result$;
     if (key){

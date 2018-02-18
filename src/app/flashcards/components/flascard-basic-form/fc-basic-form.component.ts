@@ -160,14 +160,13 @@ export class FlashcardBasicFormComponent implements OnInit{
   openDialogCat(){
     let tempTitle = 'Confirm dialog';
     let tempText = 'Just click a button!';
-    let selectedOption;
     this.fcDialogSIService.confirm({title: tempTitle, message: tempText})
       .subscribe((result : any) => {
-          selectedOption = result;
-          this.currentImage = result._lagacyUrl;
-          console.log(this.currentImage);
-          let output = <HTMLImageElement>document.getElementById('after_upload_img');
-          output.src  = this.currentImage;
+          if(result){
+            this.currentImage = result._lagacyUrl;
+            let output = <HTMLImageElement>document.getElementById('after_upload_img');
+            output.src  = this.currentImage;
+          }
       });
   }
 
