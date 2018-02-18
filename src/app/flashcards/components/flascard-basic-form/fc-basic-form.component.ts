@@ -22,6 +22,9 @@ import { Image } from '../../models/image';
 })
 export class FlashcardBasicFormComponent implements OnInit{
 
+  @Input() basicForm : FormGroup;
+  @Output() updateBasicForm = new EventEmitter<FormGroup>();
+
   public db ?: any ;
   public isView : boolean = true;
   public cardViewStatus : string = 'visibility';
@@ -42,6 +45,8 @@ export class FlashcardBasicFormComponent implements OnInit{
     "#000080", //navy
   ];
   public currentColorIndex : number = 0;
+  // Enter, comma
+  separatorKeysCodes = [ENTER, COMMA];
 
   /**
    * upload image file
@@ -49,37 +54,23 @@ export class FlashcardBasicFormComponent implements OnInit{
   fileToUpload: File = null;
   public currentImage : any = "assets/images/photo-2.jpg";
 
-  // Enter, comma
-  separatorKeysCodes = [ENTER, COMMA];
-
-  basicForm: FormGroup;
-
   constructor(
     private http : HttpClient,
-    private fb : FormBuilder,
     public fcDialogSIService : FcDialogSearchImgService,
   ){
-    this.initializeForm();
-  }
-
-  initializeForm(){
-    this.basicForm = this.fb.group({
-      title         : ['', Validators.required],
-      description   : '',
-      image         : '',
-      tags          : '',
-    });
   }
 
   onSubmit(){
 
     const value = this.basicForm.value;
     console.log(value);
+
+    this.updateBasicForm.emit(this.basicForm);
     // this.http.put(this.URL + '/flashcard.json', newFlashcard).subscribe(data => console.log(data));
   }
 
   ngOnInit() {
-    this.initializeForm();
+    // this.initializeForm();
   }
 
   changeView(){

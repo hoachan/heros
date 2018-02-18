@@ -23,7 +23,7 @@ export class FlashcardCreateComponent implements OnInit {
   ){
 
   }
-  
+
   initializeForm(){
     let title  : string = "";
     let description : string = "";
@@ -57,5 +57,11 @@ export class FlashcardCreateComponent implements OnInit {
 
     this.cardViewStatus = (this.isView) ? 'visibility' : 'visibility_off';
     console.log(this.cardViewStatus);
+  }
+
+  updateBasicForm(form : FormGroup){
+    this.fcForm.patchValue({
+      ...form
+    });
   }
 }
