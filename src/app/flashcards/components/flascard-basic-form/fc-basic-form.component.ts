@@ -5,7 +5,7 @@ import { Flashcard } from './../../models/flashcard';
 
 import { HttpClient } from '@angular/common/http';
 
-import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
+import { FormBuilder,FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 
 /**
  * for mat-chip
@@ -56,37 +56,25 @@ export class FlashcardBasicFormComponent implements OnInit{
 
   constructor(
     private http : HttpClient,
-    public fcDialogSIService : FcDialogSearchImgService
+    private fb : FormBuilder,
+    public fcDialogSIService : FcDialogSearchImgService,
   ){
     this.initializeForm();
   }
 
   initializeForm(){
-    let title  : string = "";
-    let description : string = "";
-
-    /*egret form*/
-    let password = new FormControl('', Validators.required);
-    let confirmPassword = new FormControl('');
-
-    this.basicForm = new FormGroup({
-      'title'         : new FormControl(title, Validators.required),
-      'description'   : new FormControl(description, Validators.required),
-      'image'         : new FormControl(''),
-      'tags'          : new FormControl('')
-    })
+    this.basicForm = this.fb.group({
+      title         : ['', Validators.required],
+      description   : '',
+      image         : '',
+      tags          : '',
+    });
   }
 
   onSubmit(){
 
     const value = this.basicForm.value;
-    let newFlashcard  = {
-        title : value.title,
-        description : value.description,
-        tags : this.tags
-    }
-
-    console.log(newFlashcard);
+    console.log(value);
     // this.http.put(this.URL + '/flashcard.json', newFlashcard).subscribe(data => console.log(data));
   }
 
@@ -134,10 +122,8 @@ export class FlashcardBasicFormComponent implements OnInit{
   }
 
   handleFileInput(files) {
-
     this.fileToUpload = files.item(0);
     this.updateCurrentImage();
-    // console.log(this.fileToUpload);
   }
 
   /** 
@@ -150,11 +136,13 @@ export class FlashcardBasicFormComponent implements OnInit{
       that.currentImage = reader.result;
       let output = <HTMLImageElement>document.getElementById('after_upload_img');
       output.src  = that.currentImage;
-      console.log(reader.result);
+      that.updateImgUrlForm(that.currentImage);
     }
 
     if(this.fileToUpload)
-    reader.readAsDataURL(this.fileToUpload);
+      {
+        reader.readAsDataURL(this.fileToUpload);
+      }
   }
 
   openDialogCat(){
@@ -166,6 +154,7 @@ export class FlashcardBasicFormComponent implements OnInit{
             this.currentImage = result._lagacyUrl;
             let output = <HTMLImageElement>document.getElementById('after_upload_img');
             output.src  = this.currentImage;
+            this.updateImgUrlForm(this.currentImage);
           }
       });
   }
@@ -174,5 +163,14 @@ export class FlashcardBasicFormComponent implements OnInit{
   openWindowImage(){
     var uploadImg = document.getElementById('upload_img');
     uploadImg.click();
+  }
+
+  /** 
+   * Updating url of form then adding image
+  */
+  updateImgUrlForm(url : string){
+    this.basicForm.patchValue({
+      image : this.currentImage
+    });
   }
 }
