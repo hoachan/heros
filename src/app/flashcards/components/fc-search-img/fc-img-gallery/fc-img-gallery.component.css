@@ -1,0 +1,13 @@
+.fc-gallery {
+    cursor: pointer;
+}
+
+.fc-grid-list mat-grid-tile {
+    margin: 2px;
+    border : solid 1px gray;
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+.fc-grid-list mat-grid-tile:hover {
+    box-shadow: 0 0 16px 9px rgba(0, 153, 203, 0.5);
+}

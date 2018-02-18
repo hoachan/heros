@@ -1,5 +1,5 @@
 <div mat-dialog-content>
-  <fc-search-img [data]="data"></fc-search-img>
+  <fc-search-img [data]="data" (image)="choicedImg($event)"></fc-search-img>
 </div>
 <div mat-dialog-actions>
   <button 

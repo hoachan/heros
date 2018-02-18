@@ -13,6 +13,7 @@ import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import {ENTER, COMMA} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material';
 import { FcDialogSearchImgService } from '../fc-dialog/fc-dialog-search-img/fc-dialog-search-img.service';
+import { Image } from '../../models/image';
 
 @Component({
   selector: 'fc-basic-form',
@@ -161,9 +162,12 @@ export class FlashcardBasicFormComponent implements OnInit{
     let tempText = 'Just click a button!';
     let selectedOption;
     this.fcDialogSIService.confirm({title: tempTitle, message: tempText})
-      .subscribe((result) => {
-        selectedOption = result;
-        console.log(selectedOption);
+      .subscribe((result : any) => {
+          selectedOption = result;
+          this.currentImage = result._lagacyUrl;
+          console.log(this.currentImage);
+          let output = <HTMLImageElement>document.getElementById('after_upload_img');
+          output.src  = this.currentImage;
       });
   }
 

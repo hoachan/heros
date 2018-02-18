@@ -6,6 +6,7 @@ export class ImageInfo {
 export class Image {
     id : string;
     code : string;
+    name : string;
     personId : string;
     timestamp : string;
     lastModified : string;
@@ -27,6 +28,7 @@ export function generateMocImage() : Image {
     return {
         id : '1',
         code : 'string',
+        name : 'hoa chan',
         personId : '1',
         timestamp : '20180116',
         lastModified : '20180116',
@@ -43,7 +45,7 @@ export function generateMocPaging() : Paging {
     return {
         page : 1,
         perPage : 3,
-        token : 'sadasdfafda',
+        token : 'kadhfuelfnzlffkzfsdlkfj343klsf',
         total : 50
     }
 }

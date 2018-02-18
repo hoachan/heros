@@ -26,4 +26,4 @@
       </form>
   </mat-card-content>
 </mat-card>
-<fc-img-gallery></fc-img-gallery>
+<fc-img-gallery [images]="images.models" (image)="choicedImg($event)"></fc-img-gallery>

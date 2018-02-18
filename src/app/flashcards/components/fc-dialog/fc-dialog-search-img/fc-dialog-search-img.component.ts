@@ -14,7 +14,8 @@ export class FcDialogSearchImgComponent implements OnInit {
 
   ngOnInit() {
   }
-  choiceImg(){
-    console.log("test choice");
+  choicedImg(image){
+    console.log(image);
+    this.dialogRef.close(image);
   }
 }

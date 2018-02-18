@@ -16,11 +16,17 @@ export class FcSearchImgService {
   ) { }
 
   searchKey (str : String) : Observable<ImageInfo>{
-    let modelImg = generateMocImage();
+    let modelImg1 = generateMocImage();
+    let modelImg2 = generateMocImage();
+    let modelImg3 = generateMocImage();
+
+    modelImg2.id='2';
+    modelImg3.id = '3';
+
     let pag = generateMocPaging();
 
     let imgInfo = {
-      models : [modelImg, modelImg, modelImg],
+      models : [modelImg1, modelImg2, modelImg3],
       paging : pag
     }
 

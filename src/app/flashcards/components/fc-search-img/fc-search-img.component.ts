@@ -1,6 +1,6 @@
-import { Component, OnInit, Inject, Input } from '@angular/core';
+import { Component, OnInit, Inject, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { ImageInfo, generateMocImage, generateMocPaging } from '../../models/image';
+import { ImageInfo, Image, generateMocImage, generateMocPaging } from '../../models/image';
 import { FcSearchImgService } from './fc-search-img.service';
 
 @Component({
@@ -10,8 +10,10 @@ import { FcSearchImgService } from './fc-search-img.service';
 })
 export class FcSearchImgComponent implements OnInit {
   @Input() data;
+  @Output() image = new EventEmitter<Image>();
+
   public searchForm : FormGroup;
-  public imageInfo : ImageInfo;
+  public images : ImageInfo;
   constructor(
     private fb : FormBuilder,
     public searchImgService : FcSearchImgService,
@@ -19,6 +21,7 @@ export class FcSearchImgComponent implements OnInit {
 
   ngOnInit() {
     this.buildSearchForm();
+    this.createImages();
   }
   
   buildSearchForm(){
@@ -39,5 +42,13 @@ export class FcSearchImgComponent implements OnInit {
 
   reset(){
     this.searchForm.reset();
+  }
+
+  createImages(){
+    this.searchImgService.searchKey('key').subscribe(images => this.images = {...images});
+  }
+
+  choicedImg(img : Image){
+    this.image.emit(img);
   }
 }
