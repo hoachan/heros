@@ -1,3 +1,4 @@
+<!-- basic information flashcard -->
 <div fxLayout="row" fxLayoutWrap="wrap">
     <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="calc(100% - 300px)">
         <mat-card class="p-0">
@@ -15,7 +16,7 @@
                 </button>
             </mat-card-title>
             <mat-card-content *ngIf="isView">
-                <form  [formGroup]="basicForm" (ngSubmit)="onSubmit()">
+                <form  [formGroup]="fcForm" (ngSubmit)="onSubmit()">
                     <mat-form-field class="full-width">
                         <input
                         matInput
@@ -110,7 +111,7 @@
             <!-- view tittle -->
             <mat-card-title class="mat-bg-accent m-0">
                 <div class="card-title-text">
-                    <span>{{basicForm.value.title}}</span>
+                    <span>{{fcForm.value.title}}</span>
                     <span fxFlex></span>
                     <button class="card-control" mat-icon-button>
                         <mat-icon>more_vert</mat-icon>
@@ -122,7 +123,7 @@
             <img mat-card-image [src]="currentImage" id="after_upload_img">
             <!-- view content -->
             <mat-card-content>
-                <p [innerHtml]="basicForm.value.description"></p>
+                <p [innerHtml]="fcForm.value.description"></p>
                 <mat-divider></mat-divider>
                 <!-- view all tags -->
                 <div class="form-chip-list">
@@ -140,3 +141,5 @@
         </mat-card>
     </div>
 </div>
+
+<!-- detail content flashcard -->

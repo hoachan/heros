@@ -1,10 +1,8 @@
-import { FileUploader } from 'ng2-file-upload';
 import { Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
 
 import { Flashcard } from './../../models/flashcard';
 
 import { HttpClient } from '@angular/common/http';
-
 import { FormBuilder,FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 
 /**
@@ -13,19 +11,17 @@ import { FormBuilder,FormGroup, FormControl, FormArray, Validators } from '@angu
 import {ENTER, COMMA} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material';
 import { FcDialogSearchImgService } from '../fc-dialog/fc-dialog-search-img/fc-dialog-search-img.service';
+
 import { Image } from '../../models/image';
-
 @Component({
-  selector: 'fc-basic-form',
-  templateUrl : './fc-basic-form.html',
-  styleUrls    : ['./fc-basic-form.css'],
+  selector: 'fc-create-card',
+  templateUrl : './fc-create.component.html',
+  styleUrls    : ['./fc-create.component.css'],
 })
-export class FlashcardBasicFormComponent implements OnInit{
-
-  @Input() basicForm : FormGroup;
-  @Output() updateBasicForm = new EventEmitter<FormGroup>();
+export class FlashcardCreateComponent implements OnInit {
 
   public db ?: any ;
+  public fcForm : FormGroup;
   public isView : boolean = true;
   public cardViewStatus : string = 'visibility';
 
@@ -56,21 +52,38 @@ export class FlashcardBasicFormComponent implements OnInit{
 
   constructor(
     private http : HttpClient,
+    private fb : FormBuilder,
     public fcDialogSIService : FcDialogSearchImgService,
   ){
+
+  }
+
+  initializeForm(){
+    let title  : string = "";
+    let description : string = "";
+
+    this.fcForm = this.fb.group({
+      title : ['', Validators.required],
+      description : '',
+      tags : [''],
+      image : ''
+    });
   }
 
   onSubmit(){
 
-    const value = this.basicForm.value;
-    console.log(value);
+    const value = this.fcForm.value;
+    let newFlashcard  = {
+        title : value.title,
+        description : value.description,
+    }
 
-    this.updateBasicForm.emit(this.basicForm);
+    console.log(newFlashcard);
     // this.http.put(this.URL + '/flashcard.json', newFlashcard).subscribe(data => console.log(data));
   }
 
   ngOnInit() {
-    // this.initializeForm();
+    this.initializeForm();
   }
 
   changeView(){
@@ -78,6 +91,12 @@ export class FlashcardBasicFormComponent implements OnInit{
 
     this.cardViewStatus = (this.isView) ? 'visibility' : 'visibility_off';
     console.log(this.cardViewStatus);
+  }
+
+  updateBasicForm(form : FormGroup){
+    this.fcForm.patchValue({
+      ...form
+    });
   }
 
   addTag(event: MatChipInputEvent): void {
@@ -97,6 +116,11 @@ export class FlashcardBasicFormComponent implements OnInit{
     }
   }
 
+  checkStatusTag() : boolean{
+    this.addTagAble = (this.tags.length > this.max_tags - 1) ? false : true;
+    return this.addTagAble;
+  }
+
   removeTag(tag: any): void {
     let index = this.tags.indexOf(tag);
 
@@ -107,14 +131,23 @@ export class FlashcardBasicFormComponent implements OnInit{
     this.checkStatusTag();
   }
 
-  checkStatusTag() : boolean{
-    this.addTagAble = (this.tags.length > this.max_tags - 1) ? false : true;
-    return this.addTagAble;
-  }
-
   handleFileInput(files) {
     this.fileToUpload = files.item(0);
     this.updateCurrentImage();
+  }
+  
+  openDialogCat(){
+    let tempTitle = 'Confirm dialog';
+    let tempText = 'Just click a button!';
+    this.fcDialogSIService.confirm({title: tempTitle, message: tempText})
+      .subscribe((result : any) => {
+          if(result){
+            this.currentImage = result._lagacyUrl;
+            let output = <HTMLImageElement>document.getElementById('after_upload_img');
+            output.src  = this.currentImage;
+            this.updateImgUrlForm(this.currentImage);
+          }
+      });
   }
 
   /** 
@@ -136,20 +169,6 @@ export class FlashcardBasicFormComponent implements OnInit{
       }
   }
 
-  openDialogCat(){
-    let tempTitle = 'Confirm dialog';
-    let tempText = 'Just click a button!';
-    this.fcDialogSIService.confirm({title: tempTitle, message: tempText})
-      .subscribe((result : any) => {
-          if(result){
-            this.currentImage = result._lagacyUrl;
-            let output = <HTMLImageElement>document.getElementById('after_upload_img');
-            output.src  = this.currentImage;
-            this.updateImgUrlForm(this.currentImage);
-          }
-      });
-  }
-
   /**Trigger click of input with type="file" */
   openWindowImage(){
     var uploadImg = document.getElementById('upload_img');
@@ -160,7 +179,7 @@ export class FlashcardBasicFormComponent implements OnInit{
    * Updating url of form then adding image
   */
   updateImgUrlForm(url : string){
-    this.basicForm.patchValue({
+    this.fcForm.patchValue({
       image : this.currentImage
     });
   }

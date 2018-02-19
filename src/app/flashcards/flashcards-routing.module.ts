@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { FlashcardCreateComponent } from './components/flashcard-create/flashcard-create';
+import { FlashcardCreateComponent } from './components/flashcard-create/fc-create.component';
 
 const routes: Routes = [
   {

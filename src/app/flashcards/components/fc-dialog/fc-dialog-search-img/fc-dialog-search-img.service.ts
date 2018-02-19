@@ -19,7 +19,7 @@ export class FcDialogSearchImgService {
     data.message = data.message || 'Are you sure?';
     let dialogRef: MatDialogRef<FcDialogSearchImgComponent>;
     dialogRef = this.dialog.open(FcDialogSearchImgComponent, {
-      width: '80%',
+      width: '70%',
       disableClose: true,
       data: {title: data.title, message: data.message}
     });
