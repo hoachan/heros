@@ -9,9 +9,11 @@ import { MaterialModule } from '../../material';
 
 import { FlashcardCreateComponent } from './flashcard-create/fc-create.component';
 import { FcDialogSearchImgModule } from './fc-dialog/fc-dialog-search-img/fc-dialog-search-img.module';
+import { FcPreviewBasicComponent } from './fc-preview-basic/fc-preview-basic.component';
 
 export const COMPONENTS = [
   FlashcardCreateComponent,
+  FcPreviewBasicComponent,
 ];
 
 @NgModule({

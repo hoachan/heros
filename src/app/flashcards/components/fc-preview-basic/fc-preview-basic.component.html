@@ -1,0 +1,32 @@
+<mat-card class="p-0">
+    <!-- view tittle -->
+    <mat-card-title class="mat-bg-accent m-0">
+        <div class="card-title-text">
+            <span>{{data.title}}</span>
+            <span fxFlex></span>
+            <button class="card-control" mat-icon-button>
+                <mat-icon>more_vert</mat-icon>
+            </button>
+        </div>
+    </mat-card-title>
+    
+    <!-- view image -->
+    <img mat-card-image [src]="currentImage" id="after_upload_img">
+    <!-- view content -->
+    <mat-card-content>
+        <p [innerHtml]="data.description"></p>
+        <mat-divider></mat-divider>
+        <!-- view all tags -->
+        <div class="form-chip-list">
+            <mat-chip-list>
+                    <mat-chip 
+                        *ngFor="let tag of tags"
+                        selected="true"
+                        [style.background]="tag.color"
+                    >
+                        {{tag.name}}
+                    </mat-chip>
+            </mat-chip-list>
+        </div>
+    </mat-card-content>
+</mat-card>
