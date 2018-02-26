@@ -1,14 +1,20 @@
+import { Image } from "./image";
+
 export interface Flashcard {
     id : string,
-    volumeInfo : {
-        title       : string,
-        subtitle    : string,
-        description : string,
-        publishMode : string,
-        publishDate : string,
-        imageLinks  : {
-            thumbnail       : string,
-            smallThumbnail  : string
-        }
-    }
+    title : string,
+    category : string,
+    tags : string,
+    image : Image,
+    list : FlashcardContent
+}
+
+export interface FlashcardContent {
+    id : string,
+    index : number,
+    frontend : string,
+    backend : string,
+    image : Image,
+    image_view_at : string,
+    image_view_auto : boolean,
 }

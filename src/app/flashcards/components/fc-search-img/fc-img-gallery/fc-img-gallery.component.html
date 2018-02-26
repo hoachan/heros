@@ -7,7 +7,7 @@
     <mat-grid-list cols="4"  class="fc-grid-list">
       <!-- Gallery item -->
       <mat-grid-tile *ngFor="let image of images" (click)="choice(image)">
-        <img mat-card-image [src]="image._lagacyUrl" [alt]="image.name" class="fc-gallery">
+        <img mat-card-image [src]="image.url" [alt]="image.title" class="fc-gallery">
       </mat-grid-tile>
     </mat-grid-list>
   </mat-card-content>

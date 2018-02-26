@@ -5,16 +5,15 @@ export class ImageInfo {
 
 export class Image {
     id : string;
-    code : string;
-    name : string;
-    personId : string;
-    timestamp : string;
-    lastModified : string;
+    title : string;
+    tags : string;
+    category : string;
     thirdPartyId : string;
     license : number;
     width : number;
     height : number;
-    _lagacyUrl : string;
+    url : string;
+    small_thumbnail_url : string;
 }
 
 export class Paging {
@@ -27,16 +26,15 @@ export class Paging {
 export function generateMocImage() : Image {
     return {
         id : '1',
-        code : 'string',
-        name : 'hoa chan',
-        personId : '1',
-        timestamp : '20180116',
-        lastModified : '20180116',
-        thirdPartyId : 'abcxyz',
+        title : 'football',
+        tags : 'hoa chan',
+        category : '1',
+        thirdPartyId : '20180116',
         license : 1,
         width : 180,
         height : 180,
-        _lagacyUrl : 'https://farm3.staticflickr.com/2447/3889973492_04f8690fb9_m.jpg',
+        url : 'https://farm3.staticflickr.com/2447/3889973492_04f8690fb9_m.jpg',
+        small_thumbnail_url : null
     }
 
 }

@@ -142,7 +142,7 @@ export class FlashcardCreateComponent implements OnInit {
     this.fcDialogSIService.confirm({title: tempTitle, message: tempText})
       .subscribe((result : any) => {
           if(result){
-            this.currentImage = result._lagacyUrl;
+            this.currentImage = result.url;
             let output = <HTMLImageElement>document.getElementById('after_upload_img');
             output.src  = this.currentImage;
             this.updateImgUrlForm(this.currentImage);
