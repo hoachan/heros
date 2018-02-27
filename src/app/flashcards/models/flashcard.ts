@@ -6,7 +6,7 @@ export interface Flashcard {
     category : string,
     tags : string,
     image : Image,
-    list : FlashcardContent
+    list : [FlashcardContent]
 }
 
 export interface FlashcardContent {

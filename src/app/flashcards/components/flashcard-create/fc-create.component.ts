@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
 
-import { Flashcard } from './../../models/flashcard';
+import { Flashcard, FlashcardContent } from './../../models/flashcard';
 
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder,FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
@@ -59,19 +59,16 @@ export class FlashcardCreateComponent implements OnInit {
   }
 
   initializeForm(){
-    let title  : string = "";
-    let description : string = "";
-
     this.fcForm = this.fb.group({
       title : ['', Validators.required],
       description : '',
       tags : [''],
-      image : ''
+      image : '',
+      list : []
     });
   }
 
   onSubmit(){
-
     const value = this.fcForm.value;
     let newFlashcard  = {
         title : value.title,

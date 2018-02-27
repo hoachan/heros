@@ -112,8 +112,50 @@
             ></fc-preview-basic>
     </div>
 </div>
-<button
-type="submit"
-mat-raised-button color="primary">Save</button>
+<div fxLayout="row" fxLayout.lt-sm="column" fxLayoutWrap="wrap">
+    <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="calc(100% - 300px)">
+        <mat-card class="p-0">
+            <mat-card-title>
+                <button type="button" mat-button>1</button>
+                <div fxFlex></div>
+                <button class="card-control"
+                    mat-icon-button
+                    (click)="changeView()"
+                    type="button"
+                 >
+                    <mat-icon>insert_photo</mat-icon>
+                 </button>
+            </mat-card-title>
+            <mat-card-content>
+                <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutWrap="wrap">
+                    <div fxFlex="50" class="pr-1">
+                        <mat-form-field class="full-width">
+                            <input
+                            matInput
+                            name=""
+                            placeholder="TERM">
+                          </mat-form-field>
+                    </div>
+                    <div fxFlex="50" class="pr-1">
+                        <mat-form-field class="full-width">
+                            <input
+                            matInput
+                            placeholder="DEFINITION">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <!-- preview flashcard content -->
+    <div fxFlex="100" fxFlex.gt-md="300px" fxFlex.gt-sm="50" *ngIf="isView">
+        <fc-preview-basic 
+            [data]="fcForm.value" 
+            [tags]="tags"
+            [currentImage]="currentImage"
+            ></fc-preview-basic>
+    </div>
+</div>
+<button type="submit" mat-raised-button color="primary">Save</button>
 </form>
 <!-- detail content flashcard -->
