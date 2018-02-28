@@ -45,3 +45,8 @@ mat-card-title {
 #after_upload_img {
     max-height: 300px;
 }
+
+/* add flashcard */
+.btn-add-flashcard {
+    min-width : 200px!important;
+}

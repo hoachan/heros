@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
 
-import { Flashcard, FlashcardContent } from './../../models/flashcard';
+import { Flashcard, FlashcardContent, generateFlashcardContent } from './../../models/flashcard';
 
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder,FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
@@ -64,8 +64,10 @@ export class FlashcardCreateComponent implements OnInit {
       description : '',
       tags : [''],
       image : '',
-      list : []
+      listCards : this.fb.array([]),
     });
+
+    this.initListCards();
   }
 
   onSubmit(){
@@ -180,4 +182,25 @@ export class FlashcardCreateComponent implements OnInit {
       image : this.currentImage
     });
   }
+
+  /**
+   * Processing flashcard content
+   */
+  addFlashcard(){
+    this.listCards.push(this.fb.group(generateFlashcardContent()));
+  }
+
+  get listCards() : FormArray{
+    return this.fcForm.get('listCards') as FormArray;
+  }
+
+  initListCards(){
+    const flashcardContent  = this.fb.array([
+      generateFlashcardContent(),
+      generateFlashcardContent(),
+      generateFlashcardContent()],
+    );
+    this.fcForm.setControl('listCards', flashcardContent);
+  }
+
 }
