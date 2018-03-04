@@ -1,15 +1,15 @@
 import { Image, generateMocImage } from "./image";
 
-export interface Flashcard {
+export interface Flashcards {
     id : string,
     title : string,
     category : string,
     tags : string,
     image : Image,
-    list : [FlashcardContent]
+    listCards : Flashcard[],
 }
 
-export interface FlashcardContent {
+export interface Flashcard {
     id : string,
     index : number,
     frontend : string,
@@ -19,7 +19,7 @@ export interface FlashcardContent {
     image_view_auto : boolean,
 }
 
-export function generateFlashcardContent(): FlashcardContent{
+export function generateFlashcardContent(): Flashcard{
     return {
         id : '',
         index : 1,
