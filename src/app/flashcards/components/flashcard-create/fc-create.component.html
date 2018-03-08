@@ -126,6 +126,13 @@
                         >
                         <mat-icon>insert_photo</mat-icon>
                     </button>
+                    <button
+                        class="card-control"
+                        mat-icon-button
+                        (click)="deleteCard(i)"
+                    >
+                        <mat-icon>delete_forever</mat-icon>
+                    </button>
                 </mat-card-title>
                 <mat-card-content>
                         <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutWrap="wrap">

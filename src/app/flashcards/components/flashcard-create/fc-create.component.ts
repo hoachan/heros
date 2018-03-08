@@ -191,6 +191,9 @@ export class FlashcardCreateComponent implements OnInit {
     this.listCards.push(this.fb.group(generateFlashcardContent()));
   }
 
+  deleteCard(index : number){
+    this.listCards.removeAt(index);
+  }
   get listCards() : FormArray{
     return this.fcForm.get('listCards') as FormArray;
   }
